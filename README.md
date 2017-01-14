@@ -10,7 +10,7 @@ modules.
 
 ## Let me have it!
 ```sh
-npm install --save typed
+npm install --save @typed/core
 
 # or individual functions
 npm install --save @typed/map @typed/filter

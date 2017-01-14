@@ -1,0 +1,39 @@
+{
+  "name": "@typed/core",
+  "version": "0.0.0",
+  "description": "Collection of Well-Typed functional utilities",
+  "main": "lib/index.js",
+  "jsnext:main": "lib.es2015/index.js",
+  "module": "lib.es2015/index.js",
+  "typings": "lib.es2015/index.d.ts",
+  "files": [
+    "lib",
+    "lib.es2015"
+  ],
+  "scripts": {
+    "postinstall": "rimraf node_modules/@typed && nb link",
+    "test": "nb tslint --only @typed/core && nb mocha --only @typed/core"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TylorS/typed"
+  },
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TylorS/typed/issues"
+  },
+  "homepage": "https://github.com/TylorS/typed#readme",
+  "dependencies": {
+    "@typed/compose": "latest",
+    "@typed/curry": "latest",
+    "@typed/filter": "latest",
+    "@typed/is-array-like": "latest",
+    "@typed/is-promise": "latest",
+    "@typed/is-stream": "latest",
+    "@typed/map": "latest"
+  },
+  "devDependencies": {
+    "rimraf": "^2.5.4"
+  }
+}
