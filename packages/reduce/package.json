@@ -1,0 +1,29 @@
+{
+  "name": "@typed/reduce",
+  "version": "0.0.0",
+  "description": "Well-typed reduction",
+  "main": "lib/index.js",
+  "jsnext:main": "lib.es2015/index.js",
+  "module": "lib.es2015/index.js",
+  "typings": "lib.es2015/index.d.ts",
+  "files": [
+    "lib",
+    "lib.es2015"
+  ],
+  "scripts": {
+    "test": "nb tslint --only @typed/reduce && nb mocha --only @typed/reduce"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TylorS/typed"
+  },
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TylorS/typed/issues"
+  },
+  "homepage": "https://github.com/TylorS/typed#readme",
+  "dependencies": {
+    "@typed/curry": "latest"
+  }
+}
