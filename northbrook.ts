@@ -1,3 +1,4 @@
+import { plugin as create } from './.plugins/create';
 import { plugin as mocha } from '@northbrook/mocha';
 import { plugin as northbrook } from 'northbrook/plugins';
 import { plugin as tsc } from '@northbrook/tsc';
@@ -12,6 +13,7 @@ const config =
       mocha,
       tslint,
       tsc,
+      create,
     ],
 
     mocha: {
