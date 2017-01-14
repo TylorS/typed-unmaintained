@@ -1,6 +1,6 @@
 {
   "name": "@typed/reduce",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Well-typed reduction",
   "main": "lib/index.js",
   "jsnext:main": "lib.es2015/index.js",
