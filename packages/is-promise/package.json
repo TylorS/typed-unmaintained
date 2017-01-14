@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Check if a value is a Promise",
   "main": "lib/index.js",
+  "jsnext:main": "lib.es2015/index.js",
+  "module": "lib.es2015/index.js",
+  "typings": "lib.es2015/index.d.ts",
   "scripts": {
     "test:lint": "northbrook tslint --only @typed/is-promise",
     "test:unit": "northbrook mocha --only @typed/is-promise",
@@ -21,20 +24,5 @@
   "bugs": {
     "url": "https://github.com/tylors/typed-is-promise/issues"
   },
-  "homepage": "https://github.com/tylors/typed-is-promise#readme",
-  "jsnext:main": "lib.es2015/index.js",
-  "module": "lib.es2015/index.js",
-  "typings": "lib.es2015/index.d.ts",
-  "devDependencies": {
-    "@motorcycle/tslint": "^1.3.0",
-    "@northbrook/mocha": "^3.1.0",
-    "@northbrook/tsc": "^1.0.4",
-    "@northbrook/tslint": "^2.1.4",
-    "@types/mocha": "^2.2.37",
-    "@types/node": "^6.0.59",
-    "mocha": "^3.2.0",
-    "northbrook": "^4.3.5",
-    "tslint": "^4.3.1",
-    "typescript": "^2.1.4"
-  }
+  "homepage": "https://github.com/tylors/typed-is-promise#readme"
 }

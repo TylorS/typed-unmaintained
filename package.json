@@ -7,13 +7,14 @@
     "test": "test"
   },
   "scripts": {
+    "clean": "northbrook exec -- rimraf yarn.lock node_modules",
     "test:lint": "northbrook tslint",
     "test:unit": "northbrook mocha",
     "test": "npm run test:lint && npm run test:unit",
     "commit": "northbrook commit",
     "build": "northbrook tsc",
     "preversion": "npm run build",
-    "postinstall": "northbrook link && northbrook exec -- yarn",
+    "postinstall": "northbrook exec -- yarn && northbrook exec -- rimraf node_modules/@typed && northbrook link",
     "release": "northbrook release"
   },
   "repository": {
@@ -37,7 +38,8 @@
     "@types/mocha": "^2.2.37",
     "@types/node": "^7.0.0",
     "mocha": "^3.2.0",
-    "northbrook": "^4.4.0",
+    "northbrook": "^4.4.1",
+    "rimraf": "^2.5.4",
     "tslint": "^4.3.1",
     "typescript": "^2.1.5"
   }
