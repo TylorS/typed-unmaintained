@@ -15,7 +15,7 @@
     "build": "northbrook tsc",
     "preversion": "npm run build",
     "postinstall": "northbrook exec -- yarn && northbrook exec -- rimraf node_modules/@typed && northbrook link",
-    "release": "northbrook release"
+    "release": "npm run build && northbrook release"
   },
   "repository": {
     "type": "git",
