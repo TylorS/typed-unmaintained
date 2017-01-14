@@ -1,6 +1,6 @@
 {
   "name": "@typed/core",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Collection of Well-Typed functional utilities",
   "main": "lib/index.js",
   "jsnext:main": "lib.es2015/index.js",
