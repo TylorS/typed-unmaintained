@@ -30,6 +30,7 @@
     "@typed/is-array-like": "latest",
     "@typed/is-promise": "latest",
     "@typed/is-stream": "latest",
-    "@typed/map": "latest"
+    "@typed/map": "latest",
+    "@typed/reduce": "latest"
   }
 }

@@ -5,3 +5,4 @@ export * from '@typed/is-array-like';
 export * from '@typed/is-promise';
 export * from '@typed/is-stream';
 export * from '@typed/map';
+export * from '@typed/reduce';
