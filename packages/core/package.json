@@ -11,7 +11,6 @@
     "lib.es2015"
   ],
   "scripts": {
-    "postinstall": "rimraf node_modules/@typed && nb link",
     "test": "nb tslint --only @typed/core && nb mocha --only @typed/core"
   },
   "repository": {
@@ -32,8 +31,5 @@
     "@typed/is-promise": "latest",
     "@typed/is-stream": "latest",
     "@typed/map": "latest"
-  },
-  "devDependencies": {
-    "rimraf": "^2.5.4"
   }
 }
