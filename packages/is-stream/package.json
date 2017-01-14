@@ -1,0 +1,36 @@
+{
+  "name": "@typed/is-stream",
+  "version": "1.0.1",
+  "description": "Duck-typing check if a value is a most.js Stream",
+  "main": "lib/index.js",
+  "jsnext:main": "lib.es2015/index.js",
+  "module": "lib.es2015/index.js",
+  "typings": "lib.es2015/index.d.ts",
+  "scripts": {
+    "test:lint": "northbrook tslint --only @typed/is-stream",
+    "test:unit": "northbrook mocha --only @typed/is-stream",
+    "test": "npm run test:lint && npm run test:unit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TylorS/is-stream.git"
+  },
+  "keywords": [
+    "mostjs",
+    "duck",
+    "typing",
+    "isStream"
+  ],
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TylorS/is-stream/issues"
+  },
+  "homepage": "https://github.com/TylorS/is-stream#readme",
+  "dependencies": {
+    "most": "^1.1.1"
+  },
+  "devDependencies": {
+    "most-subject": "^5.3.0"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "@typed/compose",
+  "version": "1.0.0",
+  "description": "A well-typed compose function for TypeScript",
+  "main": "lib/index.js",
+  "jsnext:main": "lib.es2015/index.js",
+  "module": "lib.es2015/index.js",
+  "typings": "lib.es2015/index.d.ts",
+  "scripts": {
+    "test": "nb tslint --only @typed/compose && nb mocha --only @typed/compose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TylorS/typed-compose.git"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TylorS/typed-compose/issues"
+  },
+  "homepage": "https://github.com/TylorS/typed-compose#readme"
+}

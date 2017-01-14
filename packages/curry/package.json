@@ -1,0 +1,27 @@
+{
+  "name": "@typed/curry",
+  "version": "1.0.1",
+  "description": "Well-typed curry functions for TypeScript",
+  "main": "lib/index.js",
+  "jsnext:main": "lib.es2015/index.js",
+  "module": "lib.es2015/index.js",
+  "typings": "lib.es2015/index.d.ts",
+  "scripts": {
+    "test": "nb tslint --only @typed/curry && nb mocha --only @typed/curry"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TylorS/typed-curry.git"
+  },
+  "keywords": [
+    "typescript",
+    "curry",
+    "functional"
+  ],
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TylorS/typed-curry/issues"
+  },
+  "homepage": "https://github.com/TylorS/typed-curry#readme"
+}

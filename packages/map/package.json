@@ -1,0 +1,36 @@
+{
+  "name": "@typed/map",
+  "version": "1.0.0",
+  "description": "Map over things with types :fire:",
+  "main": "lib/index.js",
+  "jsnext:main": "lib.es2015/index.js",
+  "module": "lib.es2015/index.js",
+  "typings": "lib.es2015/index.d.ts",
+  "scripts": {
+    "test:lint": "northbrook tslint --only @typed/map",
+    "test:unit": "northbrook mocha --only @typed/map",
+    "test": "npm run test:lint && npm run test:unit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TylorS/typed-map.git"
+  },
+  "keywords": [
+    "typescript",
+    "map",
+    "array",
+    "arraylike"
+  ],
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TylorS/typed-map/issues"
+  },
+  "homepage": "https://github.com/TylorS/typed-map#readme",
+  "dependencies": {
+    "@typed/curry": "^1.0.1",
+    "@typed/is-array-like": "^1.0.0",
+    "@typed/is-stream": "^1.0.1",
+    "most": "^1.1.1"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "@typed/is-array-like",
+  "version": "1.0.0",
+  "description": "Well-typed isArrayLike implementation",
+  "main": "lib/index.js",
+  "scripts": {
+    "test:lint": "northbrook tslint --only @typed/is-array-like",
+    "test:unit": "northbrook mocha --only @typed/is-array-like",
+    "test": "npm run test:lint && npm run test:unit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TylorS/typed-is-array-like.git"
+  },
+  "keywords": [
+    "typescript",
+    "isArrayLike"
+  ],
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TylorS/typed-is-array-like/issues"
+  },
+  "homepage": "https://github.com/TylorS/typed-is-array-like#readme",
+  "jsnext:main": "lib.es2015/index.js",
+  "module": "lib.es2015/index.js",
+  "typings": "lib.es2015/index.d.ts"
+}
