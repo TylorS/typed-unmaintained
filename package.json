@@ -1,0 +1,38 @@
+{
+  "private": true,
+  "name": "typed",
+  "version": "0.0.0",
+  "description": "A collection of functional data structures for TypeScript",
+  "repository": "git@github.com:TylorS/typed",
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@typed/test": "2.5.0",
+    "dox": "0.9.0",
+    "glob-expand": "0.2.1",
+    "husky": "0.14.3",
+    "lerna": "2.0.0",
+    "lint-staged": "4.0.3",
+    "prettier": "1.5.3",
+    "typescript": "2.4.2"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write --print-width 100 --tab-width 2 --no-semi --single-quote --trailing-comma es5 --parser typescript",
+      "git add"
+    ]
+  },
+  "scripts": {
+    "precommit": "lint-staged",
+    "postinstall": "lerna bootstrap --hoist -- --pure-lockfile && yarn build",
+    "test": "yarn test:lint && yarn test:unit",
+    "test:unit": "lerna run test:unit",
+    "test:lint": "lerna exec -- ../../node_modules/.bin/prettier --write --print-width 100 --tab-width 2 --no-semi --single-quote --trailing-comma es5 --parser typescript src/**/*.ts",
+    "build": "node tools/build.js",
+    "docs": "node tools/docs.js && git add **/README.md && git commit -m 'docs(README): rebuild documentation' && git push",
+    "release:pre": "yarn test && yarn build",
+    "release:post": "yarn docs",
+    "release:next": "yarn release:pre && lerna publish --exact --canary=next --npm-tag=next -- --access=public && yarn release:post",
+    "release": "yarn release:pre && lerna publish --exact -- --access=public && yarn release:post"
+  }
+}
