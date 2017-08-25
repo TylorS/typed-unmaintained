@@ -1,7 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 const dox = require('dox')
-const { ascend, flatten } = require('167')
+const { ascend, flatten, find, propEq, dropLast, last } = require('167')
 
 exports.parseDocumentation = parseDocumentation
 
@@ -19,17 +19,33 @@ function foo(file) {
 
     if (!tags || tags.length === 0 || ignore) return null
 
-    const [{ string: name }, { string: example } = { string: '' }, type] = tags
+    const { string: name } = find(propEq('type', 'name'), tags) || {}
+    const { string: example = '' } = find(propEq('type', 'example'), tags) || {}
+    const type = find(propEq('type', 'type'), tags)
 
     return {
       file: path.relative(process.cwd(), file),
       description: full,
       name,
       example,
-      code,
+      code: trimExcess(code),
       type: !!type,
     }
   }
+}
+
+function trimExcess(code) {
+  code = code.trim()
+
+  if (code.endsWith('{')) {
+    const lastLine = last(code.split('\n'))
+    
+    // merged namespace
+    if (lastLine.startsWith('export namespace'))
+      return code.replace(/export\snamespace\s[A-Za-z0-9]+(\s)+{?/, '').trim()
+  }
+
+  return code
 }
 
 function parseComments(source) {

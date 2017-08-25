@@ -81,7 +81,7 @@ ${code}
 const typeExample = `
 \`\`\`typescript
 
-${example}
+${code}
 
 \`\`\`
 `
