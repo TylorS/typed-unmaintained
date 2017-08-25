@@ -53,7 +53,7 @@ ${replaceBrackets(description)}
 
 `
 
-  const api = 
+  const exampleMarkdown = example.trim() === '' ? '' :
 `
 <details>
   <summary>See an example</summary>
@@ -63,9 +63,12 @@ ${example}
 \`\`\`
 
 </details>
+`
 
+  const codeMarkdown = code.trim() === '' ? '' :
+`
 <details>
-  <summary>See the code</summary>
+<summary>See the code</summary>
 
 \`\`\`typescript
 
@@ -73,12 +76,12 @@ ${code}
 
 \`\`\`
 
-</details>
+</details>`
 
-<hr />
+  const api =  exampleMarkdown + codeMarkdown + `\n<hr />\n`
+
+  const typeExample = 
 `
-
-const typeExample = `
 \`\`\`typescript
 
 ${code}

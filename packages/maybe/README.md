@@ -54,7 +54,7 @@ function toMaybe<A>(value: A | null): Maybe<A> {
 </details>
 
 <details>
-  <summary>See the code</summary>
+<summary>See the code</summary>
 
 ```typescript
 
@@ -66,7 +66,6 @@ export function of<A>(value: A): Just<A> {
 ```
 
 </details>
-
 <hr />
 
 
@@ -80,16 +79,7 @@ Apply a function contained in a Maybe to a value contained in another Maybe.
 
 
 <details>
-  <summary>See an example</summary>
-  
-```typescript
-
-```
-
-</details>
-
-<details>
-  <summary>See the code</summary>
+<summary>See the code</summary>
 
 ```typescript
 
@@ -104,7 +94,6 @@ export const ap: MaybeAP = curry2(function ap<A, B>(
 ```
 
 </details>
-
 <hr />
 
 
@@ -118,16 +107,7 @@ Create a new Maybe from another Maybe's value.
 
 
 <details>
-  <summary>See an example</summary>
-  
-```typescript
-
-```
-
-</details>
-
-<details>
-  <summary>See the code</summary>
+<summary>See the code</summary>
 
 ```typescript
 
@@ -141,7 +121,6 @@ export const chain: MaybeChain = curry2(function<A, B>(
 ```
 
 </details>
-
 <hr />
 
 
@@ -168,7 +147,7 @@ console.log(Maybe.isJust(Maybe.of(1))) // logs true
 </details>
 
 <details>
-  <summary>See the code</summary>
+<summary>See the code</summary>
 
 ```typescript
 
@@ -179,7 +158,6 @@ export function isJust<A>(maybe: Maybe<A>): maybe is Just<A> {
 ```
 
 </details>
-
 <hr />
 
 
@@ -206,7 +184,7 @@ console.log(Maybe.isNothing(Maybe.of(1))) // logs false
 </details>
 
 <details>
-  <summary>See the code</summary>
+<summary>See the code</summary>
 
 ```typescript
 
@@ -217,7 +195,6 @@ export function isNothing<A>(maybe: Maybe<A>): maybe is Nothing {
 ```
 
 </details>
-
 <hr />
 
 
@@ -231,16 +208,7 @@ Map the value of a Maybe.
 
 
 <details>
-  <summary>See an example</summary>
-  
-```typescript
-
-```
-
-</details>
-
-<details>
-  <summary>See the code</summary>
+<summary>See the code</summary>
 
 ```typescript
 
@@ -254,7 +222,6 @@ export const map: MaybeMap = curry2(function map<A, B>(
 ```
 
 </details>
-
 <hr />
 
 
@@ -268,16 +235,7 @@ Returns a instance of Nothing.
 
 
 <details>
-  <summary>See an example</summary>
-  
-```typescript
-
-```
-
-</details>
-
-<details>
-  <summary>See the code</summary>
+<summary>See the code</summary>
 
 ```typescript
 
@@ -288,7 +246,6 @@ export function nothing<A = any>(): Maybe<A> {
 ```
 
 </details>
-
 <hr />
 
 
@@ -313,7 +270,7 @@ const maybe: Maybe<number> = Maybe.of(1)
 </details>
 
 <details>
-  <summary>See the code</summary>
+<summary>See the code</summary>
 
 ```typescript
 
@@ -324,7 +281,6 @@ export function of<A>(value: A): Maybe<A> {
 ```
 
 </details>
-
 <hr />
 
 
@@ -385,7 +341,7 @@ console.log(value) // logs '1'
 </details>
 
 <details>
-  <summary>See the code</summary>
+<summary>See the code</summary>
 
 ```typescript
 
@@ -396,7 +352,6 @@ export function fromJust<A>(just: Just<A>): A {
 ```
 
 </details>
-
 <hr />
 
 
@@ -411,16 +366,7 @@ Nothing or the value contained in a Just.
 
 
 <details>
-  <summary>See an example</summary>
-  
-```typescript
-
-```
-
-</details>
-
-<details>
-  <summary>See the code</summary>
+<summary>See the code</summary>
 
 ```typescript
 
@@ -454,7 +400,6 @@ export interface MaybeAP {
 ```
 
 </details>
-
 <hr />
 
 
@@ -468,16 +413,7 @@ Given a value returns true if it is a Maybe
 
 
 <details>
-  <summary>See an example</summary>
-  
-```typescript
-
-```
-
-</details>
-
-<details>
-  <summary>See the code</summary>
+<summary>See the code</summary>
 
 ```typescript
 
@@ -488,5 +424,4 @@ export function isMaybe<A>(x: any): x is Maybe<A> {
 ```
 
 </details>
-
 <hr />
