@@ -1,0 +1,26 @@
+{
+  "name": "@typed/either",
+  "version": "0.0.0",
+  "description": "Well-typed Either data-structure",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TylorS/typed.git"
+  },
+  "keywords": [
+    "Either",
+    "typed"
+  ],
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TylorS/typed/issues"
+  },
+  "homepage": "https://github.com/TylorS/typed#readme",
+  "dependencies": {
+    "167": "0.37.0"
+  }
+}
