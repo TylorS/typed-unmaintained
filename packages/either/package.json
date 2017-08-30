@@ -3,8 +3,16 @@
   "version": "0.0.0",
   "description": "Well-typed Either data-structure",
   "main": "lib/index.js",
+  "module": "lib.es2015/index.js",
+  "jsnext:main": "lib.es2015/index.js",
+  "typings": "lib/index.d.ts",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cd ../../ && node ./tools/build.js --only maybe",
+    "test": "yarn test:lint && yarn test:unit",
+    "test:browser": "yarn test:unit -- --browser",
+    "test:unit": "../../node_modules/.bin/typed-test 'src/*.test.ts' 'src/**/*.test.ts'",
+    "test:lint": "../../node_modules/.bin/prettier --write --print-width 100 --tab-width 2 --no-semi --single-quote --trailing-comma es5 --parser typescript src/**/*.ts"
   },
   "repository": {
     "type": "git",
