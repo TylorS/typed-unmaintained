@@ -12,7 +12,7 @@ export namespace Left {
    * @name Left.of<A>(value: A): Left<A>
    */
   export function of<A>(value: A): Left<A> {
-    return Object.freeze<Left<A>>({ '@typed/Left': value })
+    return { '@typed/Left': value }
   }
 }
 

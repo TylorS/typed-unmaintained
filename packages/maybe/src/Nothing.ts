@@ -6,4 +6,5 @@
 export interface Nothing {
   readonly '@typed/Nothing': true
 }
-export const Nothing: Nothing = Object.freeze<Nothing>({ '@typed/Nothing': true })
+
+export const Nothing: Nothing = { '@typed/Nothing': true }

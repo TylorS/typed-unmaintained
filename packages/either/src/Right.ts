@@ -15,7 +15,7 @@ export namespace Right {
    * @return {Right<A>}
    */
   export function of<A>(value: A): Right<A> {
-    return Object.freeze<Right<A>>({ '@typed/Right': value })
+    return { '@typed/Right': value }
   }
 }
 

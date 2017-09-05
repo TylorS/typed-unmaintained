@@ -30,128 +30,7 @@ export type Either<A, B> = Left<A> | Right<B>
 ```
 
 
-#### Either.ap\<A, B, C\>(fn: Either\<A, Arity1\<B, C\>\>, value: Either\<A, B\>): Either\<A, C\>
-
-<p>
-
-Applies the function contained in a Right Either, to the value of contained
-in another Right Either.
-
-</p>
-
-
-<details>
-<summary>See the code</summary>
-
-```typescript
-
-export const ap: EitherAP = curry2(function ap<A, B, C>(
-  fn: Either<A, Arity1<B, C>>,
-  value: Either<A, B>
-): Either<A, C> {
-  return chain(f => map(f, value), fn)
-})
-}
-
-export interface EitherChain {
-<A, B, C>(f: (value: B) => Either<A, C>, either: Either<A, B>): Either<A, C>
-<A, B, C>(f: (value: B) => Either<A, C>): (either: Either<A, B>) => Either<A, C>
-}
-
-export interface EitherMap {
-<A, B, C>(f: Arity1<B, C>, either: Either<A, B>): Either<A, C>
-<A, B, C>(f: Arity1<B, C>): (either: Either<A, B>) => Either<A, C>
-}
-
-export interface EitherAP {
-<A, B, C>(fn: Either<A, Arity1<B, C>>, either: Either<A, B>): Either<A, C>
-<A, B, C>(fn: Either<A, Arity1<B, C>>): (either: Either<A, B>) => Either<A, C>
-}
-
-```
-
-</details>
-<hr />
-
-
-#### Either.chain\<A, B, C\>(f: (value: B) =\> Either\<A, C\>, either: Either\<A, B\>): Either\<A, C\>
-
-<p>
-
-Create a new Either\<A, C\> by calling a function `f` with the value of 
-the given Either\<A, B\> if that Either is Right\<B\> and not Left\<A\>. If the 
-given Either\<A, B\> is Left\<A\> it is simply returned.
-
-</p>
-
-
-<details>
-<summary>See the code</summary>
-
-```typescript
-
-export const chain: EitherChain = curry2(function chain<A, B, C>(
-  f: (value: B) => Either<A, C>,
-  either: Either<A, B>
-): Either<A, C> {
-  return isLeft<A, B>(either) ? either : f(fromRight(either))
-})
-
-```
-
-</details>
-<hr />
-
-
-#### Either.isLeft\<A, B\>(either: Either\<A, B\>): Either is Left\<A\>
-
-<p>
-
-Returns true if an Either\<A, B\> is type Left\<A\>
-
-</p>
-
-
-<details>
-<summary>See the code</summary>
-
-```typescript
-
-export function isLeft<A, B>(either: Either<A, B>): either is Left<A> {
-  return either.hasOwnProperty('@typed/Left')
-}
-
-```
-
-</details>
-<hr />
-
-
-#### Either.isRight\<A, B\>(either: Either\<A, B\>): either is Right\<B\>
-
-<p>
-
-Returns true if an Either\<A, B\> is type Right\<B\>
-
-</p>
-
-
-<details>
-<summary>See the code</summary>
-
-```typescript
-
-export function isRight<A, B>(either: Either<A, B>): either is Right<B> {
-  return either.hasOwnProperty('@typed/Right')
-}
-
-```
-
-</details>
-<hr />
-
-
-#### Either.left\<A, B\>(value: A): Either\<A, B\>
+#### Either.left\<A, B = any\>(value: A): Either\<A, B\>
 
 <p>
 
@@ -165,7 +44,8 @@ Creates an Either\<A, B\> that is of type Left\<A\>
 
 ```typescript
 
-export const left = <A, B>(value: A): Either<A, B> => Left.of(value)
+export const left:<A, B = any>(value: A) => Either<A, B> = Left.of
+}
 
 ```
 
@@ -173,34 +53,7 @@ export const left = <A, B>(value: A): Either<A, B> => Left.of(value)
 <hr />
 
 
-#### Either.map\<A, B, C\>(f: (value: B) =\> C, either: Either\<A, B\>): Either\<A, C\>
-
-<p>
-
-Maps the value of a Right\<B\> either to type Either\<A, C\>
-
-</p>
-
-
-<details>
-<summary>See the code</summary>
-
-```typescript
-
-export const map: EitherMap = curry2(function map<A, B, C>(
-  f: Arity1<B, C>,
-  either: Either<A, B>
-): Either<A, C> {
-  return chain<A, B, C>(pipe<B, C, Either<A, C>>(f, Either.of), either)
-})
-
-```
-
-</details>
-<hr />
-
-
-#### Either.of\<A, B\>(value: B): Either\<A, B\>
+#### Either.right\<A, B = any\>(value: A): Either\<B, A\>
 
 <p>
 
@@ -214,7 +67,7 @@ Creates an Either\<A, B\> that is of type Right\<B\>
 
 ```typescript
 
-export const of = <A, B>(value: B): Either<A, B> => Right.of(value)
+export const right: <A, B = any>(value: A) => Either<B, A> = Right.of
 
 ```
 
@@ -261,7 +114,7 @@ Create a Left\<A\>
 ```typescript
 
 export function of<A>(value: A): Left<A> {
-  return Object.freeze<Left<A>>({ '@typed/Left': value })
+  return { '@typed/Left': value }
 }
 }
 
@@ -304,7 +157,7 @@ Creates a Right
 ```typescript
 
 export function of<A>(value: A): Right<A> {
-  return Object.freeze<Right<A>>({ '@typed/Right': value })
+  return { '@typed/Right': value }
 }
 }
 
@@ -354,6 +207,54 @@ Extracts the value contained in a Right.
 
 export function fromRight<A>(right: Right<A>): A {
   return right['@typed/Right']
+}
+
+```
+
+</details>
+<hr />
+
+
+#### isLeft\<A, B\>(either: Either\<A, B\>): Either is Left\<A\>
+
+<p>
+
+Returns true if an Either\<A, B\> is type Left\<A\>
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function isLeft<A, B>(either: Either<A, B>): either is Left<A> {
+  return either.hasOwnProperty('@typed/Left')
+}
+
+```
+
+</details>
+<hr />
+
+
+#### isRight\<A, B\>(either: Either\<A, B\>): either is Right\<B\>
+
+<p>
+
+Returns true if an Either\<A, B\> is type Right\<B\>
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function isRight<A, B>(either: Either<A, B>): either is Right<B> {
+  return either.hasOwnProperty('@typed/Right')
 }
 
 ```
