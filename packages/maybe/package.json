@@ -30,8 +30,5 @@
   "bugs": {
     "url": "https://github.com/TylorS/typed/issues"
   },
-  "homepage": "https://github.com/TylorS/typed#readme",
-  "dependencies": {
-    "167": "0.37.0"
-  }
+  "homepage": "https://github.com/TylorS/typed#readme"
 }

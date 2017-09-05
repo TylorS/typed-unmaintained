@@ -12,14 +12,14 @@ export type Either<A, B> = Left<A> | Right<B>
 export namespace Either {
   /**
    * Creates an Either<A, B> that is of type Right<B>
-   * @name Either.right<A, B = any>(value: A): Either<B, A>
+   * @name Either.of<A, B = any>(value: A): Either<B, A>
    */
-  export const right: <A, B = any>(value: A) => Either<B, A> = Right.of
+  export const of: <A, B = any>(value: A) => Either<B, A> = Right.of
   /**
    * Creates an Either<A, B> that is of type Left<A>
    * @name Either.left<A, B = any>(value: A): Either<A, B> 
    */
-  export const left:<A, B = any>(value: A) => Either<A, B> = Left.of
+  export const left: <A, B = any>(value: A) => Either<A, B> = Left.of
 }
 
 /**

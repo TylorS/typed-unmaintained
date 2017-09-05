@@ -115,6 +115,40 @@ export const Nothing: Nothing = { '@typed/Nothing': true }
 ```
 
 
+#### ap\<A, B\>(fn: Maybe\<(value: A) =\> B\>, value: Maybe\<A\>): Maybe\<B\>
+
+<p>
+
+Applies the function contained in a `Maybe` to the value contained in a 
+second `Maybe`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const ap: MaybeAp = function ap<A, B>(fn: Maybe<(value: A) => B>, maybe?: Maybe<A>): any {
+  return maybe ? __ap(fn, maybe) : (maybe: Maybe<A>) => __ap(fn, maybe)
+}
+
+function __ap<A, B>(fn: Maybe<(value: A) => B>, maybe: Maybe<A>): Maybe<B> {
+  return chain(f => map(f, maybe), fn)
+}
+
+export interface MaybeAp {
+  <A, B>(fn: Maybe<(value: A) => B>, value: Maybe<A>): Maybe<B>
+  <A, B>(fn: Maybe<(value: A) => B>): (value: Maybe<A>) => Maybe<B>
+}
+
+```
+
+</details>
+<hr />
+
+
 #### fromJust\<A\>(just: Just\<A\>): A
 
 <p>
