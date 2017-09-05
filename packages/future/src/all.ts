@@ -13,6 +13,8 @@ export function all<A, B>(futures: ArrayLike<Future<A, B>>): Future<A, ReadonlyA
 
     for (let i = 0; i < futures.length; ++i) promises[i] = toPromise(futures[i])
 
-    Promise.all(promises).then(resolve).catch(reject)
+    Promise.all(promises)
+      .then(resolve)
+      .catch(reject)
   })
 }
