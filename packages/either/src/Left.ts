@@ -1,6 +1,7 @@
 /**
  * A JSON-serializable Left<A> data-structure.
  * @name Left
+ * @type
  */
 export interface Left<A> {
   readonly '@typed/Left': A

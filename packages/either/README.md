@@ -84,9 +84,6 @@ A JSON-serializable Left\<A\> data-structure.
 </p>
 
 
-<details>
-<summary>See the code</summary>
-
 ```typescript
 
 export interface Left<A> {
@@ -94,9 +91,6 @@ export interface Left<A> {
 }
 
 ```
-
-</details>
-<hr />
 
 
 #### Left.of\<A\>(value: A): Left\<A\>
