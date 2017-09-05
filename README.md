@@ -6,4 +6,8 @@
 
 <div align='center'>
 
-## Packages -- Coming soon
+## Packages
+
+- [`@typed/either`](./packages/either) -- Well-typed and functional Either.
+- [`@typed/future`](./packages/future) -- Well-typed and functional Future.
+- [`@typed/maybe`](./packages/maybe) -- Well-typed and functional Maybe.
