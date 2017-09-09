@@ -1,4 +1,4 @@
-# @typed/either -- 1.0.0
+# @typed/either -- 1.0.1
 
 Well-typed Either data-structure
 
