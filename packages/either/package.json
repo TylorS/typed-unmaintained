@@ -1,6 +1,6 @@
 {
   "name": "@typed/either",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Well-typed Either data-structure",
   "main": "lib/index.js",
   "module": "lib.es2015/index.js",
