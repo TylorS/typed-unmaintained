@@ -149,6 +149,42 @@ export interface MaybeAp {
 <hr />
 
 
+#### chain\<A, B\>(f: (value: A) =\> Maybe\<B\>, maybe: Maybe\<A\>): Maybe\<B\>
+
+<p>
+
+Maps a `Maybe` to another `Maybe`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const chain: MaybeChain = function chain<A, B>(
+  f: (value: A) => Maybe<B>,
+  maybe?: Maybe<A>
+): any {
+  return maybe ? __chain(f, maybe) : (maybe: Maybe<A>) => __chain(f, maybe)
+}
+
+function __chain<A, B>(f: (value: A) => Maybe<B>, maybe: Maybe<A>): Maybe<B> {
+  return isNothing(maybe) ? maybe : f(fromJust(maybe))
+}
+
+export interface MaybeChain {
+  <A, B>(f: (value: A) => Maybe<B>, maybe: Maybe<A>): Maybe<B>
+  <A, B>(f: (value: A) => Maybe<B>): (maybe: Maybe<A>) => Maybe<B>
+}
+
+```
+
+</details>
+<hr />
+
+
 #### fromJust\<A\>(just: Just\<A\>): A
 
 <p>
@@ -287,6 +323,40 @@ console.log(isNothing(Maybe.of(1))) // logs false
 
 export function isNothing<A>(maybe: Maybe<A>): maybe is Nothing {
   return (maybe as Nothing)['@typed/Nothing'] === true
+}
+
+```
+
+</details>
+<hr />
+
+
+#### map\<A, B\>(f: (value: A) =\> B, maybe: Maybe\<A\>): Maybe\<B\>
+
+<p>
+
+Applies a function to the value possibly contained in a `Maybe`. If the 
+maybe is a `Nothing` just the `Nothing` is returned.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const map: MaybeMap = function map<A, B>(f: (value: A) => B, maybe?: Maybe<A>): any {
+  return maybe ? __map(f, maybe) : (maybe: Maybe<A>) => __map(f, maybe)
+}
+
+function __map<A, B>(f: (value: A) => B, maybe: Maybe<A>): Maybe<B> {
+  return chain(a => Maybe.of(f(a)), maybe)
+}
+
+export interface MaybeMap {
+  <A, B>(f: (value: A) => B, maybe: Maybe<A>): Maybe<B>
+  <A, B>(f: (value: A) => B): (maybe: Maybe<A>) => Maybe<B>
 }
 
 ```

@@ -23,7 +23,7 @@ export namespace Future {
 
   /**
    * Creates a `Future` which will always fork to the right with the given value.
-   * @name Future.resolve<A, B = any>(value: A): Future<B, A>
+   * @name Future.of<A, B = any>(value: A): Future<B, A>
    */
   export const of = <A, B = any>(value: A): Future<B, A> => create((_, resolve) => resolve(value))
 

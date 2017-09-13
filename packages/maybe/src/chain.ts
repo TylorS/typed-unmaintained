@@ -2,6 +2,10 @@ import { Maybe } from './Maybe'
 import { fromJust } from './fromJust'
 import { isNothing } from './isNothing'
 
+/**
+ * Maps a `Maybe` to another `Maybe`.
+ * @name chain<A, B>(f: (value: A) => Maybe<B>, maybe: Maybe<A>): Maybe<B>
+ */
 export const chain: MaybeChain = function chain<A, B>(
   f: (value: A) => Maybe<B>,
   maybe?: Maybe<A>

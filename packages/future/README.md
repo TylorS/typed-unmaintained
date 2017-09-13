@@ -69,6 +69,28 @@ export const create = <A, B>(fork: Fork<A, B>): Future<A, B> => ({ fork })
 <hr />
 
 
+#### Future.of\<A, B = any\>(value: A): Future\<B, A\>
+
+<p>
+
+Creates a `Future` which will always fork to the right with the given value.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const of = <A, B = any>(value: A): Future<B, A> => create((_, resolve) => resolve(value))
+
+```
+
+</details>
+<hr />
+
+
 #### Future.reject\<A, B = any\>(value: A): Future\<A, B\>
 
 <p>
@@ -85,28 +107,6 @@ Creates a `Future` which will always fork to the left with the given value.
 
 export const reject = <A, B = any>(value: A): Future<A, B> => create(reject => reject(value))
 }
-
-```
-
-</details>
-<hr />
-
-
-#### Future.resolve\<A, B = any\>(value: A): Future\<B, A\>
-
-<p>
-
-Creates a `Future` which will always fork to the right with the given value.
-
-</p>
-
-
-<details>
-<summary>See the code</summary>
-
-```typescript
-
-export const of = <A, B = any>(value: A): Future<B, A> => create((_, resolve) => resolve(value))
 
 ```
 
