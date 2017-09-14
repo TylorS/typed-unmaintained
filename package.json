@@ -2,7 +2,7 @@
   "private": true,
   "name": "typed",
   "version": "0.0.0",
-  "description": "A collection of functional data structures for TypeScript",
+  "description": "The TypeScript standard library",
   "repository": "git@github.com:TylorS/typed",
   "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
   "license": "MIT",
