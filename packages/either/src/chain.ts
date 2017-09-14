@@ -1,5 +1,6 @@
 import { Either, isLeft } from './Either'
 
+import { curry2 } from '@typed/functions'
 import { fromRight } from './Right'
 
 /**
@@ -7,14 +8,7 @@ import { fromRight } from './Right'
  * value of another `Either`.
  * @name chain<A, B, C>(f: (value: B) => Either<A, C>, either: Either<A, B>): Either<A C>
  */
-export const chain: EitherChain = function chain<A, B, C>(
-  f: (value: B) => Either<A, C>,
-  either?: Either<A, B>
-): any {
-  if (!either) return (either: Either<A, B>) => __chain(f, either)
-
-  return __chain(f, either)
-}
+export const chain: EitherChain = curry2(__chain)
 
 function __chain<A, B, C>(f: (value: B) => Either<A, C>, either: Either<A, B>): Either<A, C> {
   return isLeft(either) ? either : f(fromRight(either))

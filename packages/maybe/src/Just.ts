@@ -1,11 +1,6 @@
-/**
- * A JSON-serializable Just data-structure
- * @name Just
- * @type
- */
-export interface Just<A> {
-  readonly '@typed/Just': A
-}
+import * as types from '@typed/core'
+
+export type Just<A> = types.Just<A>
 
 export namespace Just {
   /**

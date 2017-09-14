@@ -1,5 +1,6 @@
 import { Either } from './Either'
 import { chain } from './chain'
+import { curry2 } from '@typed/functions'
 import { map } from './map'
 
 /**
@@ -7,14 +8,7 @@ import { map } from './map'
  * second `Either`.
  * @name ap<A, B, C>(fn: Either<A, (value: B) => C>, value: Either<A, B>): Either<A, C>
  */
-export const ap: EitherAp = function ap<A, B, C>(
-  fn: Either<A, (value: B) => C>,
-  value?: Either<A, B>
-): any {
-  if (!value) return (value: Either<A, B>) => __ap(fn, value)
-
-  return __ap(fn, value)
-}
+export const ap: EitherAp = curry2(__ap)
 
 function __ap<A, B, C>(fn: Either<A, (value: B) => C>, value: Either<A, B>): Either<A, C> {
   return chain(f => map(f, value), fn)

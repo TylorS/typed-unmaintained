@@ -1,4 +1,5 @@
 import { Maybe } from './Maybe'
+import { curry2 } from '@typed/functions'
 import { fromJust } from './fromJust'
 import { isJust } from './isJust'
 
@@ -7,11 +8,7 @@ import { isJust } from './isJust'
  * Nothing or the value contained in a Just.
  * @name fromMaybe<A>(defaultValue: A, maybe: Maybe<A>): A
  */
-export const fromMaybe: FromMaybe = function fromMaybe<A>(defaultValue: A, maybe?: Maybe<A>) {
-  if (!maybe) return (maybe: Maybe<A>) => __fromMaybe(defaultValue, maybe)
-
-  return __fromMaybe(defaultValue, maybe)
-}
+export const fromMaybe: FromMaybe = curry2(__fromMaybe)
 
 function __fromMaybe<A>(defaultValue: A, maybe: Maybe<A>): A {
   return isJust(maybe) ? fromJust(maybe) : defaultValue

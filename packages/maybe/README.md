@@ -13,24 +13,6 @@ npm install --save @typed/maybe
 
 All functions are curried!
 
-#### Just
-
-<p>
-
-A JSON-serializable Just data-structure
-
-</p>
-
-
-```typescript
-
-export interface Just<A> {
-  readonly '@typed/Just': A
-}
-
-```
-
-
 #### Just.of\<A\>(value: A): Just\<A\>
 
 <p>
@@ -79,42 +61,6 @@ export const of: <A>(value: A) => Maybe<A> = Just.of
 <hr />
 
 
-#### Maybe\<A\>
-
-<p>
-
-Maybe type. Very useful when errors can occur.
-
-</p>
-
-
-```typescript
-
-export type Maybe<A> = Just<A> | Nothing
-
-```
-
-
-#### Nothing
-
-<p>
-
-The Nothing type, used in place of nulls or undefined.
-
-</p>
-
-
-```typescript
-
-export interface Nothing {
-  readonly '@typed/Nothing': true
-}
-
-export const Nothing: Nothing = { '@typed/Nothing': true }
-
-```
-
-
 #### ap\<A, B\>(fn: Maybe\<(value: A) =\> B\>, value: Maybe\<A\>): Maybe\<B\>
 
 <p>
@@ -130,9 +76,7 @@ second `Maybe`.
 
 ```typescript
 
-export const ap: MaybeAp = function ap<A, B>(fn: Maybe<(value: A) => B>, maybe?: Maybe<A>): any {
-  return maybe ? __ap(fn, maybe) : (maybe: Maybe<A>) => __ap(fn, maybe)
-}
+export const ap: MaybeAp = curry2(__ap)
 
 function __ap<A, B>(fn: Maybe<(value: A) => B>, maybe: Maybe<A>): Maybe<B> {
   return chain(f => map(f, maybe), fn)
@@ -163,12 +107,7 @@ Maps a `Maybe` to another `Maybe`.
 
 ```typescript
 
-export const chain: MaybeChain = function chain<A, B>(
-  f: (value: A) => Maybe<B>,
-  maybe?: Maybe<A>
-): any {
-  return maybe ? __chain(f, maybe) : (maybe: Maybe<A>) => __chain(f, maybe)
-}
+export const chain: MaybeChain = curry2(__chain)
 
 function __chain<A, B>(f: (value: A) => Maybe<B>, maybe: Maybe<A>): Maybe<B> {
   return isNothing(maybe) ? maybe : f(fromJust(maybe))
@@ -236,11 +175,7 @@ Nothing or the value contained in a Just.
 
 ```typescript
 
-export const fromMaybe: FromMaybe = function fromMaybe<A>(defaultValue: A, maybe?: Maybe<A>) {
-  if (!maybe) return (maybe: Maybe<A>) => __fromMaybe(defaultValue, maybe)
-
-  return __fromMaybe(defaultValue, maybe)
-}
+export const fromMaybe: FromMaybe = curry2(__fromMaybe)
 
 function __fromMaybe<A>(defaultValue: A, maybe: Maybe<A>): A {
   return isJust(maybe) ? fromJust(maybe) : defaultValue
@@ -346,9 +281,7 @@ maybe is a `Nothing` just the `Nothing` is returned.
 
 ```typescript
 
-export const map: MaybeMap = function map<A, B>(f: (value: A) => B, maybe?: Maybe<A>): any {
-  return maybe ? __map(f, maybe) : (maybe: Maybe<A>) => __map(f, maybe)
-}
+export const map: MaybeMap = curry2(__map)
 
 function __map<A, B>(f: (value: A) => B, maybe: Maybe<A>): Maybe<B> {
   return chain(a => Maybe.of(f(a)), maybe)

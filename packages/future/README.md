@@ -13,40 +13,6 @@ npm install --save @typed/future
 
 All functions are curried!
 
-#### Fork
-
-<p>
-
-Fork function signature used by Future.
-
-</p>
-
-
-```typescript
-
-export type Fork<A, B> = (reject: (value: A) => void, resolve: (value: B) => void) => void
-
-```
-
-
-#### Future
-
-<p>
-
-Asynchronous data-structure similar to a Promise, but lazy.
-
-</p>
-
-
-```typescript
-
-export interface Future<A, B> {
-  readonly fork: Fork<A, B>
-}
-
-```
-
-
 #### Future.create\<A, B\>(fork: Fork\<A, B\>): Future\<A, B\>
 
 <p>
@@ -61,7 +27,9 @@ Creates a `Future` given a `Fork` function.
 
 ```typescript
 
-export const create = <A, B>(fork: Fork<A, B>): Future<A, B> => ({ fork })
+export function create<A, B>(fork: Fork<A, B>): Future<A, B> {
+  return { fork }
+}
 
 ```
 
@@ -83,7 +51,9 @@ Creates a `Future` which will always fork to the right with the given value.
 
 ```typescript
 
-export const of = <A, B = any>(value: A): Future<B, A> => create((_, resolve) => resolve(value))
+export function of<A, B = any>(value: A): Future<B, A> {
+  return create((_, resolve) => resolve(value))
+}
 
 ```
 
@@ -105,7 +75,9 @@ Creates a `Future` which will always fork to the left with the given value.
 
 ```typescript
 
-export const reject = <A, B = any>(value: A): Future<A, B> => create(reject => reject(value))
+export function reject<A, B = any>(value: A): Future<A, B> {
+  return create(reject => reject(value))
+}
 }
 
 ```
@@ -163,14 +135,7 @@ second `Future`.
 
 ```typescript
 
-export const ap: FutureAp = function ap<A, B, C>(
-  fn: Future<A, (value: B) => C>,
-  value?: Future<A, B>
-): any {
-  if (!value) return (value: Future<A, B>) => __ap(fn, value)
-
-  return __ap(fn, value)
-}
+export const ap: FutureAp = curry2(__ap)
 
 function __ap<A, B, C>(fn: Future<A, (value: B) => C>, value: Future<A, B>): Future<A, C> {
   return chain(f => map(f, value), fn)
@@ -202,14 +167,7 @@ value of another future. Similar to `Promise.then`.
 
 ```typescript
 
-export const chain: FutureChain = function chain<A, B, C>(
-  f: (value: B) => Future<A, C>,
-  future?: Future<A, B>
-): any {
-  if (!future) return (future: Future<A, B>) => __chain(f, future)
-
-  return __chain(f, future)
-}
+export const chain: FutureChain = curry2(__chain)
 
 function __chain<A, B, C>(f: (value: B) => Future<A, C>, future: Future<A, B>): Future<A, C> {
   return Future.create((reject, resolve) => {
@@ -243,14 +201,7 @@ value of another future. Similar to `Promise.catch`.
 
 ```typescript
 
-export const chainLeft: FutureChainLeft = function chainLeft<A, B, C>(
-  f: (value: A) => Future<C, B>,
-  future?: Future<A, B>
-): any {
-  if (!future) return (future: Future<A, B>) => __chainLeft(f, future)
-
-  return __chainLeft(f, future)
-}
+export const chainLeft: FutureChainLeft = curry2(__chainLeft)
 
 function __chainLeft<A, B, C>(f: (value: A) => Future<C, B>, future: Future<A, B>): Future<C, B> {
   return Future.create((reject, resolve) => {
@@ -283,18 +234,7 @@ Activates a future (side-effectful).
 
 ```typescript
 
-export const fork: ForkFn = function fork<A, B>(
-  left: (value: A) => any,
-  right?: (value: B) => any,
-  future?: Future<A, B>
-) {
-  if (right === void 0)
-    return (right: (value: B) => any, future?: Future<A, B>) => fork(left, right, future)
-
-  if (future === void 0) return (future: Future<A, B>) => forkFuture(left, right, future)
-
-  return forkFuture(left, right, future)
-} as ForkFn
+export const fork: ForkFn = curry3(forkFuture)
 
 function forkFuture<A, B>(
   left: (value: A) => any,
@@ -331,14 +271,7 @@ Maps the value of a Future. Similar to `Promise.then`.
 
 ```typescript
 
-export const map: FutureMap = function map<A, B, C>(
-  f: (value: B) => C,
-  future?: Future<A, B>
-): any {
-  if (!future) return (future: Future<A, B>) => __map(f, future)
-
-  return __map(f, future)
-}
+export const map: FutureMap = curry2(__map)
 
 function __map<A, B, C>(f: (value: B) => C, future: Future<A, B>): Future<A, C> {
   return chain(b => Future.of(f(b)), future)
@@ -370,14 +303,7 @@ value of another future. Similar to `Promise.catch`.
 
 ```typescript
 
-export const mapLeft: FutureMapLeft = function mapLeft<A, B, C>(
-  f: (value: A) => C,
-  future?: Future<A, B>
-): any {
-  if (!future) return (future: Future<A, B>) => __mapLeft(f, future)
-
-  return __mapLeft(f, future)
-}
+export const mapLeft: FutureMapLeft = curry2(__mapLeft)
 
 function __mapLeft<A, B, C>(f: (value: A) => C, future: Future<A, B>): Future<C, B> {
   return chainLeft(value => Future.reject(f(value)), future)
