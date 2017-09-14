@@ -44,3 +44,4 @@ lib.es2015
 # other stuff
 src/test.ts
 .idea
+.DS_Store

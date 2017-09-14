@@ -1,13 +1,9 @@
+import * as types from '@typed/core'
+
 import { Left } from './Left'
 import { Right } from './Right'
 
-/**
- * Either data structure. Extremely useful for handling errors or different 
- * logic paths without the use of if-statements.
- * @name Either
- * @type
- */
-export type Either<A, B> = Left<A> | Right<B>
+export type Either<A, B> = types.Either<A, B>
 
 export namespace Either {
   /**

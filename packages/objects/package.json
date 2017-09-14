@@ -1,0 +1,38 @@
+{
+  "name": "@typed/objects",
+  "version": "0.0.0",
+  "description": "Well-typed functions for objects",
+  "main": "lib/index.js",
+  "module": "lib.es2015/index.js",
+  "jsnext:main": "lib.es2015/index.js",
+  "typings": "lib/index.d.ts",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "cd ../../ && node ./tools/build.js --only objects",
+    "test": "yarn test:lint && yarn test:unit",
+    "test:browser": "yarn test:unit -- --browser",
+    "test:unit": "../../node_modules/.bin/typed-test 'src/*.test.ts' 'src/**/*.test.ts'",
+    "test:lint": "../../node_modules/.bin/prettier --write --print-width 100 --tab-width 2 --no-semi --single-quote --trailing-comma es5 --parser typescript src/**/*.ts"
+  },
+  "dependencies": {
+    "@typed/core": "1.1.0",
+    "@typed/functions": "0.0.0",
+    "@typed/maybe": "2.0.0",
+    "@typed/lenses": "0.0.0",
+    "@typed/logic": "0.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TylorS/typed.git"
+  },
+  "keywords": [
+    "typed",
+    "objects"
+  ],
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TylorS/typed/issues"
+  },
+  "homepage": "https://github.com/TylorS/typed#readme"
+}

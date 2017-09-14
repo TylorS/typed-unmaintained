@@ -14,6 +14,10 @@
     "test:unit": "../../node_modules/.bin/typed-test 'src/*.test.ts' 'src/**/*.test.ts'",
     "test:lint": "../../node_modules/.bin/prettier --write --print-width 100 --tab-width 2 --no-semi --single-quote --trailing-comma es5 --parser typescript src/**/*.ts"
   },
+  "dependencies": {
+    "@typed/core": "1.1.0",
+    "@typed/functions": "0.0.0"
+  },
   "author": "Tylor Steinberger",
   "license": "MIT"
 }

@@ -1,12 +1,8 @@
-import { Just } from './Just'
-import { Nothing } from './Nothing'
+import * as types from '@typed/core'
 
-/**
- * Maybe type. Very useful when errors can occur.
- * @name Maybe<A>
- * @type
- */
-export type Maybe<A> = Just<A> | Nothing
+import { Just } from './Just'
+
+export type Maybe<A> = types.Maybe<A>
 
 export namespace Maybe {
   /**
