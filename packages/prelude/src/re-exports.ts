@@ -1,3 +1,8 @@
+/**
+ * Re-exported types and functions. Please see their respective documentation!
+ * @name
+ * @type
+ */
 export * from '@typed/core'
 export {
   unpack,
@@ -98,7 +103,6 @@ export {
   propEq,
   tryCatch,
 } from '@typed/logic'
-
 export {
   add,
   decrement,
