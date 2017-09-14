@@ -1,4 +1,4 @@
-# @typed/functions -- 0.0.0
+# @typed/functions -- 1.0.0
 
 Well-typed collection of functions for working with functions
 

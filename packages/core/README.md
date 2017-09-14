@@ -1,4 +1,4 @@
-# @typed/core -- 1.1.0
+# @typed/core -- 2.0.0
 
 Shared kernel of types for Typed organization
 

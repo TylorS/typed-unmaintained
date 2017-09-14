@@ -1,4 +1,4 @@
-# @typed/objects -- 0.0.0
+# @typed/objects -- 1.0.0
 
 Well-typed functions for objects
 
