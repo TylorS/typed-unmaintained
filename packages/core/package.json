@@ -1,6 +1,6 @@
 {
   "name": "@typed/core",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Shared kernel of types for Typed organization",
   "main": "lib/index.js",
   "module": "lib.es2015/index.js",
