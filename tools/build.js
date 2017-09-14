@@ -15,9 +15,9 @@ let allPackages = [
   'logic',
   'list',
   'math',
+  'objects',
   'strings',
   'future',
-  'objects',
   'prelude'
 ]
 
