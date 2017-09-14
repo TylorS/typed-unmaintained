@@ -1,4 +1,4 @@
-import { Maybe, fromMaybe } from '@typed/Maybe'
+import { Maybe, fromMaybe } from '@typed/maybe'
 
 import { List } from '../types'
 import { arrayFrom } from '../arrayFrom'

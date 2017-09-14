@@ -1,5 +1,5 @@
 import { Index, List } from '../types'
-import { Maybe, map } from '@typed/Maybe'
+import { Maybe, map } from '@typed/maybe'
 
 import { curry2 } from '@typed/functions'
 import { findIndex } from '../findIndex'
