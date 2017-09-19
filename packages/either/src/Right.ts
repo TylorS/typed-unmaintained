@@ -1,6 +1,11 @@
-import * as types from '@typed/core'
-
-export type Right<A> = types.Right<A>
+/**
+ * A JSON-serializable Right data-structure.
+ * @name Right
+ * @type
+ */
+export interface Right<A> {
+  readonly '@typed/Right': A
+}
 
 export namespace Right {
   /**

@@ -1,8 +1,7 @@
-import * as types from '@typed/core'
-
 import { Just } from './Just'
+import { Nothing } from './Nothing'
 
-export type Maybe<A> = types.Maybe<A>
+export type Maybe<A> = Just<A> | Nothing
 
 export namespace Maybe {
   /**

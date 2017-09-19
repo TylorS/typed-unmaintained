@@ -2,24 +2,25 @@ import { curry3, id, memoize } from '@typed/functions'
 import { equals, greaterThan, greaterThanOrEqual, ifElse, lessThan, or } from '@typed/logic'
 
 import { List } from '../types'
+import { arrayFrom } from '../arrayFrom'
 
 const findMovedIndex = memoize(__findMovedIndex)
 
 /**
  * Moves a value from one index to another.
- * @name move<A>(from: Index, to: Index, list: List<A>): List<A>
+ * @name move<A>(from: Index, to: Index, list: List<A>): Array<A>
  */
 export const move: MoveArity3 = curry3(function move<A>(
   fromIndex: number,
   toIndex: number,
   list: List<A>
-): List<A> {
+): Array<A> {
   const length = list.length
   const newArray = Array(length)
 
   const outOfBounds = or(lessThan(0), greaterThanOrEqual(length))
 
-  if (outOfBounds(toIndex) || outOfBounds(fromIndex)) return list
+  if (outOfBounds(toIndex) || outOfBounds(fromIndex)) return arrayFrom(list)
 
   for (let i = 0; i < length; ++i) newArray[i] = list[findMovedIndex(i, fromIndex, toIndex)]
 
@@ -45,16 +46,16 @@ function between(min: number, max: number): (num: number) => boolean {
 }
 
 export type MoveArity3 = {
-  <A>(fromIndex: number, toIndex: number, list: List<A>): List<A>
+  <A>(fromIndex: number, toIndex: number, list: List<A>): Array<A>
   <A>(fromIndex: number, toIndex: number): MoveArity1<A>
   <A>(fromIndex: number): MoveArity2<A>
 }
 
 export type MoveArity2<A> = {
-  (toIndex: number, list: List<A>): List<A>
+  (toIndex: number, list: List<A>): Array<A>
   (toIndex: number): MoveArity1<A>
 }
 
 export type MoveArity1<A> = {
-  (list: List<A>): List<A>
+  (list: List<A>): Array<A>
 }

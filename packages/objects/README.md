@@ -202,7 +202,7 @@ export const isEmpty: <A>(object: A) => boolean = ifElse(
 <hr />
 
 
-#### keys\<A\>(obj: A): List\<keyof A\>
+#### keys\<A\>(obj: A): Array\<keyof A\>
 
 <p>
 
@@ -216,7 +216,7 @@ Returns the keys of an object.
 
 ```typescript
 
-export const keys = <A>(obj: A): List<keyof A> => (Object.keys(obj) as any) as List<keyof A>
+export const keys = <A>(obj: A): Array<keyof A> => (Object.keys(obj) as any) as Array<keyof A>
 
 ```
 
@@ -431,7 +431,7 @@ export function typeOf(value: any): string {
 <hr />
 
 
-#### values\<A\>(obj: A): List\<A[keyof A]\>
+#### values\<A\>(obj: A): Array\<A[keyof A]\>
 
 <p>
 
@@ -445,7 +445,7 @@ Returns the values of an object.
 
 ```typescript
 
-export const values = <A>(obj: A): List<A[keyof A]> =>
+export const values = <A>(obj: A): Array<A[keyof A]> =>
   Object.keys(obj).map(key => obj[key as keyof A])
 
 ```

@@ -1,6 +1,11 @@
-import * as types from '@typed/core'
-
-export type Just<A> = types.Just<A>
+/**
+ * A JSON-serializable Just data-structure
+ * @name Just
+ * @type
+ */
+export interface Just<A> {
+  readonly '@typed/Just': A
+}
 
 export namespace Just {
   /**

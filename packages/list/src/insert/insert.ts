@@ -1,19 +1,20 @@
 import { InsertArity3 } from './types'
 import { List } from '../types'
+import { arrayFrom } from '../arrayFrom'
 import { curry3 } from '@typed/functions'
 
 /**
  * Inserts a value into a `List`. at a given index.
- * @name insert<A>(index: number, value: A, list: List<A>): List<A>
+ * @name insert<A>(index: number, value: A, list: List<A>): Array<A>
  */
 export const insert: InsertArity3 = curry3(function insert<A>(
   index: number,
   value: A,
   list: List<A>
-): List<A> {
+): Array<A> {
   const length = list.length
 
-  if (index < 0) return list
+  if (index < 0) return arrayFrom(list)
 
   if (length === 0) return [value]
 

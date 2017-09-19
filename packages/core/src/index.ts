@@ -1,6 +1,0 @@
-export * from './Either'
-export * from './functions'
-export * from './Future'
-export * from './List'
-export * from './Maybe'
-export * from './types'

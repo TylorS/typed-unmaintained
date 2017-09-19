@@ -3,7 +3,6 @@
  * @name
  * @type
  */
-export * from '@typed/core'
 export {
   unpack,
   Either,

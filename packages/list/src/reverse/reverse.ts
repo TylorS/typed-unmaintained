@@ -4,9 +4,9 @@ import { length } from '../length'
 
 /**
  * Reverses the order of values contained in a List.
- * @name reverse<A>(list: List<A>): List<A>
+ * @name reverse<A>(list: List<A>): Array<A>
  */
-export const reverse: Reverse = function reverse<A>(list: List<A>): List<A> {
+export const reverse: Reverse = function reverse<A>(list: List<A>): Array<A> {
   const itemCount = length(list)
   const reversedList = Array(itemCount)
 

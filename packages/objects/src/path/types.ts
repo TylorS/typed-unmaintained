@@ -1,4 +1,5 @@
-import { List, Maybe, StrMap } from '@typed/core'
+import { Maybe } from '@typed/maybe'
+import { StrMap } from '../types'
 
 export type Path = {
   <Z, A extends keyof Z = keyof Z>(path: [A], obj: Z): Maybe<Z[A]>
@@ -101,6 +102,6 @@ export type Path = {
     obj: Z
   ) => Maybe<R>
 
-  <Z, A>(path: List<string>, obj: Z): Maybe<A>
-  <Z, A>(path: List<string>): (obj: Z) => Maybe<A>
+  <Z, A>(path: ArrayLike<string>, obj: Z): Maybe<A>
+  <Z, A>(path: ArrayLike<string>): (obj: Z) => Maybe<A>
 }

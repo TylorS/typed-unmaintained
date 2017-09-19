@@ -5,15 +5,15 @@ import { slice } from '../slice'
 
 /**
  * Drops the first `n` items from a `List`.
- * @name drop<A>(quantity: number, list: List<A>): List<A>
+ * @name drop<A>(quantity: number, list: List<A>): Array<A>
  */
 export const drop: Drop = curry2(__drop)
 
 export type Drop = {
-  <A>(quanity: number, list: List<A>): List<A>
+  <A>(quanity: number, list: List<A>): Array<A>
   <A>(quanity: number): (list: List<A>) => List<A>
 }
 
-function __drop<A>(quanity: number, list: List<A>): List<A> {
+function __drop<A>(quanity: number, list: List<A>): Array<A> {
   return slice(quanity, Nothing, list)
 }
