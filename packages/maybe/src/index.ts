@@ -1,5 +1,7 @@
 export * from './ap'
 export * from './chain'
+export * from './combine'
+export * from './combineArray'
 export * from './fromJust'
 export * from './fromMaybe'
 export * from './isJust'
