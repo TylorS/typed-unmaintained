@@ -20,7 +20,7 @@ function __combineArray<R>(
 
   return containsNothing
     ? Nothing
-    : Just.of<R>(f.apply(null, (maybes as ReadonlyArray<Just<any>>).map(fromJust)))
+    : Just.of<R>(f(...(maybes as ReadonlyArray<Just<any>>).map(fromJust)))
 }
 
 export type CombineArray = {
