@@ -1,4 +1,4 @@
-# @typed/list -- 1.0.0
+# @typed/list -- 1.1.0
 
 Immutable List for TypeScript
 

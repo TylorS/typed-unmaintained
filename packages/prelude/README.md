@@ -1,4 +1,4 @@
-# @typed/prelude -- 1.0.0
+# @typed/prelude -- 1.1.0
 
 The TypeScript standard library
 
@@ -138,7 +138,18 @@ export {
   subtract,
   sum,
 } from '@typed/math'
-export { fromJust, fromMaybe, isJust, isNothing, Just, Nothing, Maybe, toMaybe } from '@typed/maybe'
+export {
+  fromJust,
+  fromMaybe,
+  isJust,
+  isNothing,
+  Just,
+  Nothing,
+  Maybe,
+  toMaybe,
+  combine,
+  combineArray,
+} from '@typed/maybe'
 export {
   clone,
   hasOwnProperty,
