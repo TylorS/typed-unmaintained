@@ -1,6 +1,6 @@
 {
   "name": "@typed/either",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Well-typed Either data-structure",
   "main": "lib/index.js",
   "module": "lib.es2015/index.js",
@@ -15,8 +15,8 @@
     "test:lint": "../../node_modules/.bin/prettier --write --print-width 100 --tab-width 2 --no-semi --single-quote --trailing-comma es5 --parser typescript src/**/*.ts"
   },
   "dependencies": {
-    "@typed/core": "2.0.0",
-    "@typed/functions": "1.0.0"
+    "@typed/core": "2.1.0",
+    "@typed/functions": "1.1.0"
   },
   "repository": {
     "type": "git",
