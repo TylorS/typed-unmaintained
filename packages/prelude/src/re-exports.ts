@@ -117,7 +117,18 @@ export {
   subtract,
   sum,
 } from '@typed/math'
-export { fromJust, fromMaybe, isJust, isNothing, Just, Nothing, Maybe, toMaybe } from '@typed/maybe'
+export {
+  fromJust,
+  fromMaybe,
+  isJust,
+  isNothing,
+  Just,
+  Nothing,
+  Maybe,
+  toMaybe,
+  combine,
+  combineArray,
+} from '@typed/maybe'
 export {
   clone,
   hasOwnProperty,
