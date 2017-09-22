@@ -1,4 +1,4 @@
-import { Just, fromJust, isJust } from './'
+import { Just, Nothing, fromJust, isJust, isNothing } from './'
 import { Test, describe, given, it } from '@typed/test'
 
 import { combineArray } from './combineArray'
@@ -17,6 +17,19 @@ export const test: Test = describe(`combineArray`, [
       const expected = 6
 
       if (isJust(d)) equal(expected, fromJust(d))
+    }),
+  ]),
+
+  given(`(a -> b -> c) -> Nothing -> Just b`, [
+    it(`does not call supplied function and returns Nothing`, ({ ok }) => {
+      const a = Nothing
+      const b = Just.of(1)
+
+      const f = (x: number, y: number) => x + y
+
+      const c = combineArray(f, [a, b])
+
+      ok(isNothing(c))
     }),
   ]),
 ])
