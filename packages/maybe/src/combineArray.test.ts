@@ -4,8 +4,8 @@ import { Test, describe, given, it } from '@typed/test'
 import { combineArray } from './combineArray'
 
 export const test: Test = describe(`combineArray`, [
-  given(`(a -> b -> c) -> ( Maybe a, Maybe b )`, [
-    it(`returns Maybe c`, ({ equal }) => {
+  given(`(a -> b -> c) -> ( Maybe a, Maybe b, Maybe c )`, [
+    it(`returns Maybe d`, ({ equal }) => {
       const a = Just.of(1)
       const b = Just.of(2)
       const c = Just.of(3)
