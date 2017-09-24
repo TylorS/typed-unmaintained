@@ -1,4 +1,4 @@
-# @typed/maybe -- 3.1.0
+# @typed/maybe -- 4.0.0
 
 Well-typed Maybe data structure
 
@@ -12,6 +12,24 @@ npm install --save @typed/maybe
 ## API Documentation
 
 All functions are curried!
+
+#### Just
+
+<p>
+
+A JSON-serializable Just data-structure
+
+</p>
+
+
+```typescript
+
+export interface Just<A> {
+  readonly '@typed/Just': A
+}
+
+```
+
 
 #### Just.of\<A\>(value: A): Just\<A\>
 
@@ -59,6 +77,25 @@ export const of: <A>(value: A) => Maybe<A> = Just.of
 
 </details>
 <hr />
+
+
+#### Nothing
+
+<p>
+
+The Nothing type, used in place of nulls or undefined.
+
+</p>
+
+
+```typescript
+
+export interface Nothing {
+  readonly '@typed/Nothing': true
+}
+export const Nothing: Nothing = { '@typed/Nothing': true }
+
+```
 
 
 #### ap\<A, B\>(fn: Maybe\<(value: A) =\> B\>, value: Maybe\<A\>): Maybe\<B\>

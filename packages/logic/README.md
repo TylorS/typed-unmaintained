@@ -1,4 +1,4 @@
-# @typed/logic -- 1.1.0
+# @typed/logic -- 2.0.0
 
 Collection of functions to perform logic
 

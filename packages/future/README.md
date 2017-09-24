@@ -1,4 +1,4 @@
-# @typed/future -- 2.1.0
+# @typed/future -- 3.0.0
 
 Small future implemenatation
 
@@ -12,6 +12,40 @@ npm install --save @typed/future
 ## API Documentation
 
 All functions are curried!
+
+#### Fork
+
+<p>
+
+Fork function signature used by Future.
+
+</p>
+
+
+```typescript
+
+export type Fork<A, B> = (reject: (value: A) => void, resolve: (value: B) => void) => void
+
+```
+
+
+#### Future
+
+<p>
+
+Asynchronous data-structure similar to a Promise, but lazy.
+
+</p>
+
+
+```typescript
+
+export interface Future<A, B> {
+  readonly fork: Fork<A, B>
+}
+
+```
+
 
 #### Future.create\<A, B\>(fork: Fork\<A, B\>): Future\<A, B\>
 

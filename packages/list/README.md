@@ -1,4 +1,4 @@
-# @typed/list -- 1.1.0
+# @typed/list -- 2.0.0
 
 Immutable List for TypeScript
 
@@ -12,6 +12,38 @@ npm install --save @typed/list
 ## API Documentation
 
 All functions are curried!
+
+#### Index
+
+<p>
+
+A type-alias for numbers being used as indexes for a List.
+
+</p>
+
+
+```typescript
+
+export type Index = number
+
+```
+
+
+#### List
+
+<p>
+
+An immutable List type.
+
+</p>
+
+
+```typescript
+
+export interface List<A> extends ArrayLike<A> {}
+
+```
+
 
 #### Reducer
 

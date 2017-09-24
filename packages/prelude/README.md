@@ -1,4 +1,4 @@
-# @typed/prelude -- 1.1.0
+# @typed/prelude -- 2.0.0
 
 The TypeScript standard library
 
@@ -24,7 +24,6 @@ Re-exported types and functions. Please see their respective documentation!
 
 ```typescript
 
-export * from '@typed/core'
 export {
   unpack,
   Either,
@@ -198,7 +197,7 @@ in another Applicative. Works with all data structures supported by `chain` and
 export const ap: Ap = curry2(__ap)
 
 function __ap<A, B>(fn: List<Arity1<A, B>>, value: List<A>): Array<B> {
-  return chain(f => map(f, value), fn)
+  return chain((f: Arity1<A, B>) => map(f, value), fn)
 }
 
 export type Ap = {

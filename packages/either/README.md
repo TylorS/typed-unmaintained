@@ -1,4 +1,4 @@
-# @typed/either -- 2.1.0
+# @typed/either -- 3.0.0
 
 Well-typed Either data-structure
 
@@ -12,6 +12,23 @@ npm install --save @typed/either
 ## API Documentation
 
 All functions are curried!
+
+#### Either
+
+<p>
+
+Either data structure. Extremely useful for handling errors or different 
+logic paths without the use of if-statements.
+
+</p>
+
+
+```typescript
+
+export type Either<A, B> = Left<A> | Right<B>
+
+```
+
 
 #### Either.left\<A, B = any\>(value: A): Either\<A, B\>
 
@@ -58,6 +75,24 @@ export const of: <A, B = any>(value: A) => Either<B, A> = Right.of
 <hr />
 
 
+#### Left
+
+<p>
+
+A JSON-serializable Left\<A\> data-structure.
+
+</p>
+
+
+```typescript
+
+export interface Left<A> {
+  readonly '@typed/Left': A
+}
+
+```
+
+
 #### Left.of\<A\>(value: A): Left\<A\>
 
 <p>
@@ -72,7 +107,7 @@ Create a Left\<A\>
 
 ```typescript
 
-export function of<A>(value: A): types.Left<A> {
+export function of<A>(value: A): Left<A> {
   return { '@typed/Left': value }
 }
 }
@@ -81,6 +116,24 @@ export function of<A>(value: A): types.Left<A> {
 
 </details>
 <hr />
+
+
+#### Right
+
+<p>
+
+A JSON-serializable Right data-structure.
+
+</p>
+
+
+```typescript
+
+export interface Right<A> {
+  readonly '@typed/Right': A
+}
+
+```
 
 
 #### Right.of\<A\>(value: A): Right\<A\>
@@ -218,7 +271,7 @@ Extracts the value contained in a Left.
 
 ```typescript
 
-export function fromLeft<A>(left: types.Left<A>): A {
+export function fromLeft<A>(left: Left<A>): A {
   return left['@typed/Left']
 }
 

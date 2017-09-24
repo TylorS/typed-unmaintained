@@ -1,4 +1,4 @@
-# @typed/objects -- 1.1.0
+# @typed/objects -- 2.0.0
 
 Well-typed functions for objects
 
@@ -24,7 +24,7 @@ A StrMap type. Works as a readonly object.
 
 ```typescript
 
-export { StrMap } from '@typed/core'
+export type StrMap<K extends string, V> = Readonly<Record<K, V>>
 
 ```
 
@@ -260,7 +260,7 @@ Given a path to a value it returns a Lens that operates on that value.
 
 ```typescript
 
-export const lensPath: LensPath = function(path: List<string>): Lens<any, any> {
+export const lensPath: LensPath = function(path: ArrayLike<string>): Lens<any, any> {
   return apply(Array.from(path).map(lensProp), pipeLenses)
 }
 
@@ -308,7 +308,7 @@ at that path.
 
 ```typescript
 
-export const path: Path = curry2(function(path: List<string>, obj: any): any {
+export const path: Path = curry2(function(path: ArrayLike<string>, obj: any): any {
   return lensPath<any, any>(path).view(obj)
 })
 
