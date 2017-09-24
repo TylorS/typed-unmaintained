@@ -93,7 +93,7 @@ export const append: Append = curry2(__append)
 
 export type Append = {
   <A>(value: A, list: List<A>): Array<A>
-  <A>(value: A): (list: List<A>) => List<A>
+  <A>(value: A): (list: List<A>) => Array<A>
 }
 
 function __append<A>(value: A, list: List<A>): Array<A> {
@@ -326,7 +326,7 @@ export const drop: Drop = curry2(__drop)
 
 export type Drop = {
   <A>(quanity: number, list: List<A>): Array<A>
-  <A>(quanity: number): (list: List<A>) => List<A>
+  <A>(quanity: number): (list: List<A>) => Array<A>
 }
 
 function __drop<A>(quanity: number, list: List<A>): Array<A> {
@@ -357,7 +357,7 @@ export const dropLast: DropLast = curry2(__dropLast)
 
 export type DropLast = {
   <A>(quanity: number, list: List<A>): Array<A>
-  <A>(quanity: number): (list: List<A>) => List<A>
+  <A>(quanity: number): (list: List<A>) => Array<A>
 }
 
 function __dropLast<A>(quanity: number, list: List<A>): Array<A> {
@@ -559,7 +559,7 @@ export const forEach: ForEach = curry2(__forEach)
 
 export type ForEach = {
   <A>(f: (value: A, index: number) => any, list: List<A>): Array<A>
-  <A>(f: (value: A, index: number) => any): (list: List<A>) => List<A>
+  <A>(f: (value: A, index: number) => any): (list: List<A>) => Array<A>
 }
 
 function __forEach<A>(f: (value: A, index: number) => any, list: List<A>): Array<A> {
@@ -1171,10 +1171,10 @@ export const slice: Slice = curry3(__slice)
 
 export type Slice = {
   <A>(startIndex: number, endIndex: Maybe<number>, list: List<A>): Array<A>
-  <A>(startIndex: number, endIndex: Maybe<number>): (list: List<A>) => List<A>
+  <A>(startIndex: number, endIndex: Maybe<number>): (list: List<A>) => Array<A>
   <A>(startIndex: number): {
     (endIndex: Maybe<number>, list: List<A>): Array<A>
-    (endIndex: Maybe<number>): (list: List<A>) => List<A>
+    (endIndex: Maybe<number>): (list: List<A>) => Array<A>
   }
 }
 
@@ -1206,7 +1206,7 @@ export const sort: Sort = curry2(__sort)
 
 export type Sort = {
   <A>(comparator: (a: A, b: A) => number, list: List<A>): Array<A>
-  <A>(comparator: (a: A, b: A) => number): (list: List<A>) => List<A>
+  <A>(comparator: (a: A, b: A) => number): (list: List<A>) => Array<A>
 }
 
 function __sort<A>(comparator: (a: A, b: A) => number, list: List<A>): Array<A> {
@@ -1311,7 +1311,7 @@ export const take: Take = curry2(<A>(n: number, list: List<A>) =>
 
 export type Take = {
   <A>(n: number, list: List<A>): Array<A>
-  <A>(n: number): (list: List<A>) => List<A>
+  <A>(n: number): (list: List<A>) => Array<A>
 }
 
 ```
@@ -1340,7 +1340,7 @@ export const takeLast: TakeLast = curry2(<A>(n: number, list: List<A>) =>
 
 export type TakeLast = {
   <A>(n: number, list: List<A>): Array<A>
-  <A>(n: number): (list: List<A>) => List<A>
+  <A>(n: number): (list: List<A>) => Array<A>
 }
 
 ```
@@ -1426,7 +1426,7 @@ export const without: Without = curry2(__without)
 
 export type Without = {
   <A>(values: List<A>, list: List<A>): Array<A>
-  <A>(values: List<A>): (list: List<A>) => List<A>
+  <A>(values: List<A>): (list: List<A>) => Array<A>
 }
 
 function __without<A>(values: List<A>, list: List<A>): Array<A> {

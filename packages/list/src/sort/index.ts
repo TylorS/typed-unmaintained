@@ -10,7 +10,7 @@ export const sort: Sort = curry2(__sort)
 
 export type Sort = {
   <A>(comparator: (a: A, b: A) => number, list: List<A>): Array<A>
-  <A>(comparator: (a: A, b: A) => number): (list: List<A>) => List<A>
+  <A>(comparator: (a: A, b: A) => number): (list: List<A>) => Array<A>
 }
 
 function __sort<A>(comparator: (a: A, b: A) => number, list: List<A>): Array<A> {

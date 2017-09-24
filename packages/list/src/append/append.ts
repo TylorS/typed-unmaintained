@@ -10,7 +10,7 @@ export const append: Append = curry2(__append)
 
 export type Append = {
   <A>(value: A, list: List<A>): Array<A>
-  <A>(value: A): (list: List<A>) => List<A>
+  <A>(value: A): (list: List<A>) => Array<A>
 }
 
 function __append<A>(value: A, list: List<A>): Array<A> {

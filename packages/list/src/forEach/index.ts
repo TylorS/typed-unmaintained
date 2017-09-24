@@ -10,7 +10,7 @@ export const forEach: ForEach = curry2(__forEach)
 
 export type ForEach = {
   <A>(f: (value: A, index: number) => any, list: List<A>): Array<A>
-  <A>(f: (value: A, index: number) => any): (list: List<A>) => List<A>
+  <A>(f: (value: A, index: number) => any): (list: List<A>) => Array<A>
 }
 
 function __forEach<A>(f: (value: A, index: number) => any, list: List<A>): Array<A> {

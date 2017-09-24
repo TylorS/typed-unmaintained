@@ -11,7 +11,7 @@ export const dropLast: DropLast = curry2(__dropLast)
 
 export type DropLast = {
   <A>(quanity: number, list: List<A>): Array<A>
-  <A>(quanity: number): (list: List<A>) => List<A>
+  <A>(quanity: number): (list: List<A>) => Array<A>
 }
 
 function __dropLast<A>(quanity: number, list: List<A>): Array<A> {

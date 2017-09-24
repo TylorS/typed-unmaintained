@@ -12,10 +12,10 @@ export const slice: Slice = curry3(__slice)
 
 export type Slice = {
   <A>(startIndex: number, endIndex: Maybe<number>, list: List<A>): Array<A>
-  <A>(startIndex: number, endIndex: Maybe<number>): (list: List<A>) => List<A>
+  <A>(startIndex: number, endIndex: Maybe<number>): (list: List<A>) => Array<A>
   <A>(startIndex: number): {
     (endIndex: Maybe<number>, list: List<A>): Array<A>
-    (endIndex: Maybe<number>): (list: List<A>) => List<A>
+    (endIndex: Maybe<number>): (list: List<A>) => Array<A>
   }
 }
 

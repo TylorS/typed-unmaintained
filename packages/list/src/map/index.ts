@@ -5,7 +5,7 @@ export const map: Map = curry2(__map)
 
 export type Map = {
   <A, B>(f: Arity2<A, Index, B>, list: List<A>): Array<B>
-  <A, B>(f: Arity2<A, Index, B>): (list: List<A>) => List<B>
+  <A, B>(f: Arity2<A, Index, B>): (list: List<A>) => Array<B>
 }
 
 function __map<A, B>(f: Arity2<A, Index, B>, list: List<A>): Array<B> {

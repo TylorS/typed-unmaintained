@@ -11,4 +11,4 @@ export type RemoveArity2 = {
   (amount: number): RemoveArity1
 }
 
-export type RemoveArity1 = <A>(list: List<A>) => List<A>
+export type RemoveArity1 = <A>(list: List<A>) => Array<A>

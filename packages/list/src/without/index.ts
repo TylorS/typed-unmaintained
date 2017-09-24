@@ -11,7 +11,7 @@ export const without: Without = curry2(__without)
 
 export type Without = {
   <A>(values: List<A>, list: List<A>): Array<A>
-  <A>(values: List<A>): (list: List<A>) => List<A>
+  <A>(values: List<A>): (list: List<A>) => Array<A>
 }
 
 function __without<A>(values: List<A>, list: List<A>): Array<A> {

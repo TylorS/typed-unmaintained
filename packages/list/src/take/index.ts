@@ -13,5 +13,5 @@ export const take: Take = curry2(<A>(n: number, list: List<A>) =>
 
 export type Take = {
   <A>(n: number, list: List<A>): Array<A>
-  <A>(n: number): (list: List<A>) => List<A>
+  <A>(n: number): (list: List<A>) => Array<A>
 }
