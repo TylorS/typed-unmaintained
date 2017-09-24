@@ -11,7 +11,7 @@ export const update: UpdateArity3 = curry3(function update<A>(
   index: number,
   value: A,
   list: List<A>
-): List<A> {
+): Array<A> {
   const length = list.length
   const newList = arrayFrom(list)
 

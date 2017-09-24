@@ -3,4 +3,4 @@
  * @name StrMap
  * @type
  */
-export { StrMap } from '@typed/core'
+export type StrMap<K extends string, V> = Readonly<Record<K, V>>

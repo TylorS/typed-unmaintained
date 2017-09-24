@@ -1,4 +1,4 @@
-import { Arity1 } from '@typed/core'
+import { Arity1 } from '@typed/functions'
 import { Either } from '../Either'
 
 export type Unpack = {

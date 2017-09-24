@@ -7,7 +7,6 @@ const ROOT_DIRECTORY = join(__dirname, '..')
 const PACKAGES_DIRECTORY = join(ROOT_DIRECTORY, 'packages')
 
 let allPackages = [
-  'core',
   'functions',
   'maybe',
   'either',

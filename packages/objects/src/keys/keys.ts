@@ -1,7 +1,5 @@
-import { List } from '@typed/core'
-
 /**
  * Returns the keys of an object.
- * @name keys<A>(obj: A): List<keyof A>
+ * @name keys<A>(obj: A): Array<keyof A>
  */
-export const keys = <A>(obj: A): List<keyof A> => (Object.keys(obj) as any) as List<keyof A>
+export const keys = <A>(obj: A): Array<keyof A> => (Object.keys(obj) as any) as Array<keyof A>

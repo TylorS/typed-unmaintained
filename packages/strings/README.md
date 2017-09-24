@@ -79,7 +79,7 @@ export const includes = invoker(1, 'includes')
 <hr />
 
 
-#### split(search: string | RegExp, str: string): List\<string\>
+#### split(search: string | RegExp, str: string): Array\<string\>
 
 <p>
 

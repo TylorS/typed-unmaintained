@@ -75,7 +75,7 @@ export interface ReduceRightArity1<A, B> {
 ```
 
 
-#### append\<A\>(value: A, list: List\<A\>): List\<A\>
+#### append\<A\>(value: A, list: List\<A\>): Array\<A\>
 
 <p>
 
@@ -92,11 +92,11 @@ Appends a value to the end of a list.
 export const append: Append = curry2(__append)
 
 export type Append = {
-  <A>(value: A, list: List<A>): List<A>
-  <A>(value: A): (list: List<A>) => List<A>
+  <A>(value: A, list: List<A>): Array<A>
+  <A>(value: A): (list: List<A>) => Array<A>
 }
 
-function __append<A>(value: A, list: List<A>): List<A> {
+function __append<A>(value: A, list: List<A>): Array<A> {
   const itemCount = length(list)
   const newList = Array(itemCount + 1)
 
@@ -202,7 +202,7 @@ export type AscendArity1<A> = (b: A) => ComparisonNumbers
 <hr />
 
 
-#### concat\<A\>(list1: List\<A\>, list2: List\<B\>): List\<B\>
+#### concat\<A\>(list1: List\<A\>, list2: List\<B\>): Array\<B\>
 
 <p>
 
@@ -216,7 +216,7 @@ Returns the result of concatenating the given lists or strings.
 
 ```typescript
 
-export const concat: Concat = curry2(function<A>(list1: List<A>, list2: List<A>): List<A> {
+export const concat: Concat = curry2(function<A>(list1: List<A>, list2: List<A>): Array<A> {
   const length1 = list1.length
   const length2 = list2.length
   const newList = Array(length1 + length2)
@@ -308,7 +308,7 @@ export type Descend = {
 <hr />
 
 
-#### drop\<A\>(quantity: number, list: List\<A\>): List\<A\>
+#### drop\<A\>(quantity: number, list: List\<A\>): Array\<A\>
 
 <p>
 
@@ -325,11 +325,11 @@ Drops the first `n` items from a `List`.
 export const drop: Drop = curry2(__drop)
 
 export type Drop = {
-  <A>(quanity: number, list: List<A>): List<A>
-  <A>(quanity: number): (list: List<A>) => List<A>
+  <A>(quanity: number, list: List<A>): Array<A>
+  <A>(quanity: number): (list: List<A>) => Array<A>
 }
 
-function __drop<A>(quanity: number, list: List<A>): List<A> {
+function __drop<A>(quanity: number, list: List<A>): Array<A> {
   return slice(quanity, Nothing, list)
 }
 
@@ -339,7 +339,7 @@ function __drop<A>(quanity: number, list: List<A>): List<A> {
 <hr />
 
 
-#### dropLast\<A\>(quantity: number, list: List\<A\>): List\<A\>
+#### dropLast\<A\>(quantity: number, list: List\<A\>): Array\<A\>
 
 <p>
 
@@ -356,11 +356,11 @@ Drops `n` number of items from the end of a `List`.
 export const dropLast: DropLast = curry2(__dropLast)
 
 export type DropLast = {
-  <A>(quanity: number, list: List<A>): List<A>
-  <A>(quanity: number): (list: List<A>) => List<A>
+  <A>(quanity: number, list: List<A>): Array<A>
+  <A>(quanity: number): (list: List<A>) => Array<A>
 }
 
-function __dropLast<A>(quanity: number, list: List<A>): List<A> {
+function __dropLast<A>(quanity: number, list: List<A>): Array<A> {
   return slice(0, Maybe.of(list.length - quanity), list)
 }
 
@@ -370,7 +370,7 @@ function __dropLast<A>(quanity: number, list: List<A>): List<A> {
 <hr />
 
 
-#### filter\<A\>(predicate: (value: A, index: number) =\> boolean, list: List\<A\>): List\<A\>
+#### filter\<A\>(predicate: (value: A, index: number) =\> boolean, list: List\<A\>): Array\<A\>
 
 <p>
 
@@ -390,7 +390,7 @@ Dispatches to the filter method of the second argument, if present.
 export const filter: Filter = curry2(function filter<A>(
   predicate: (a: A, index: number) => boolean,
   list: List<A>
-): List<A> {
+): Array<A> {
   const length = list.length
   const newList = []
 
@@ -541,7 +541,7 @@ function __findLastIndex<A>(predicate: (value: A) => boolean, list: List<A>): Ma
 <hr />
 
 
-#### forEach\<A\>(f: (value: A, index: number) =\> any, list: List\<A\>): List\<A\>
+#### forEach\<A\>(f: (value: A, index: number) =\> any, list: List\<A\>): Array\<A\>
 
 <p>
 
@@ -558,14 +558,14 @@ Applies a function to each item in a `List`, returning the list after.
 export const forEach: ForEach = curry2(__forEach)
 
 export type ForEach = {
-  <A>(f: (value: A, index: number) => any, list: List<A>): List<A>
-  <A>(f: (value: A, index: number) => any): (list: List<A>) => List<A>
+  <A>(f: (value: A, index: number) => any, list: List<A>): Array<A>
+  <A>(f: (value: A, index: number) => any): (list: List<A>) => Array<A>
 }
 
-function __forEach<A>(f: (value: A, index: number) => any, list: List<A>): List<A> {
+function __forEach<A>(f: (value: A, index: number) => any, list: List<A>): Array<A> {
   for (let i = 0; i < list.length; ++i) f(list[i], i)
 
-  return list
+  return arrayFrom(list)
 }
 
 ```
@@ -667,7 +667,7 @@ function __indexOf<A>(value: A, list: List<A>): Maybe<Index> {
 <hr />
 
 
-#### insert\<A\>(index: number, value: A, list: List\<A\>): List\<A\>
+#### insert\<A\>(index: number, value: A, list: List\<A\>): Array\<A\>
 
 <p>
 
@@ -685,10 +685,10 @@ export const insert: InsertArity3 = curry3(function insert<A>(
   index: number,
   value: A,
   list: List<A>
-): List<A> {
+): Array<A> {
   const length = list.length
 
-  if (index < 0) return list
+  if (index < 0) return arrayFrom(list)
 
   if (length === 0) return [value]
 
@@ -865,7 +865,7 @@ export function lensIndex<A>(index: Index): Lens<List<A>, A> {
 <hr />
 
 
-#### move\<A\>(from: Index, to: Index, list: List\<A\>): List\<A\>
+#### move\<A\>(from: Index, to: Index, list: List\<A\>): Array\<A\>
 
 <p>
 
@@ -883,13 +883,13 @@ export const move: MoveArity3 = curry3(function move<A>(
   fromIndex: number,
   toIndex: number,
   list: List<A>
-): List<A> {
+): Array<A> {
   const length = list.length
   const newArray = Array(length)
 
   const outOfBounds = or(lessThan(0), greaterThanOrEqual(length))
 
-  if (outOfBounds(toIndex) || outOfBounds(fromIndex)) return list
+  if (outOfBounds(toIndex) || outOfBounds(fromIndex)) return arrayFrom(list)
 
   for (let i = 0; i < length; ++i) newArray[i] = list[findMovedIndex(i, fromIndex, toIndex)]
 
@@ -915,18 +915,18 @@ function between(min: number, max: number): (num: number) => boolean {
 }
 
 export type MoveArity3 = {
-  <A>(fromIndex: number, toIndex: number, list: List<A>): List<A>
+  <A>(fromIndex: number, toIndex: number, list: List<A>): Array<A>
   <A>(fromIndex: number, toIndex: number): MoveArity1<A>
   <A>(fromIndex: number): MoveArity2<A>
 }
 
 export type MoveArity2<A> = {
-  (toIndex: number, list: List<A>): List<A>
+  (toIndex: number, list: List<A>): Array<A>
   (toIndex: number): MoveArity1<A>
 }
 
 export type MoveArity1<A> = {
-  (list: List<A>): List<A>
+  (list: List<A>): Array<A>
 }
 
 ```
@@ -935,7 +935,7 @@ export type MoveArity1<A> = {
 <hr />
 
 
-#### prepend\<A\>(value: A, list: List\<A\>): List\<A\>
+#### prepend\<A\>(value: A, list: List\<A\>): Array\<A\>
 
 <p>
 
@@ -951,7 +951,7 @@ Puts at value at the beginning of a `List`.
 
 export const prepend = curry2(__prepend)
 
-function __prepend<A>(value: A, list: List<A>): List<A> {
+function __prepend<A>(value: A, list: List<A>): Array<A> {
   const itemCount = length(list) + 1
   const newList = Array(itemCount)
 
@@ -968,7 +968,7 @@ function __prepend<A>(value: A, list: List<A>): List<A> {
 <hr />
 
 
-#### range(from: number, to: number): List\<number\>
+#### range(from: number, to: number): Array\<number\>
 
 <p>
 
@@ -1000,11 +1000,11 @@ equals(xs, ys) // true
 export const range: Range = curry2(__range)
 
 export type Range = {
-  (from: number, to: number): List<number>
+  (from: number, to: number): Array<number>
   (from: number): (to: number) => List<number>
 }
 
-function __range(from: number, to: number): List<number> {
+function __range(from: number, to: number): Array<number> {
   const length = to - from
   const list = Array(length)
 
@@ -1085,7 +1085,7 @@ export const reduceRight: ReduceRightArity3 = curry3(function reduce<A, B>(
 <hr />
 
 
-#### remove\<A\>(index: number, amount: number, list: List\<A\>): List\<A\>
+#### remove\<A\>(index: number, amount: number, list: List\<A\>): Array\<A\>
 
 <p>
 
@@ -1103,10 +1103,10 @@ export const remove: RemoveArity3 = curry3(function remove<A>(
   index: number,
   amount: number,
   list: List<A>
-): List<A> {
+): Array<A> {
   const length = list.length
 
-  if (isZero(amount) || isZero(length) || index >= length) return list
+  if (isZero(amount) || isZero(length) || index >= length) return arrayFrom(list)
   if (isZero(index) && amount >= length) return []
 
   const newList = Array(length - Math.abs(index) - 1)
@@ -1124,7 +1124,7 @@ export const remove: RemoveArity3 = curry3(function remove<A>(
 <hr />
 
 
-#### reverse\<A\>(list: List\<A\>): List\<A\>
+#### reverse\<A\>(list: List\<A\>): Array\<A\>
 
 <p>
 
@@ -1138,7 +1138,7 @@ Reverses the order of values contained in a List.
 
 ```typescript
 
-export const reverse: Reverse = function reverse<A>(list: List<A>): List<A> {
+export const reverse: Reverse = function reverse<A>(list: List<A>): Array<A> {
   const itemCount = length(list)
   const reversedList = Array(itemCount)
 
@@ -1153,7 +1153,7 @@ export const reverse: Reverse = function reverse<A>(list: List<A>): List<A> {
 <hr />
 
 
-#### slice\<A\>(start: number, end: Maybe\<number\>, list: List\<A\>): List\<A\>
+#### slice\<A\>(start: number, end: Maybe\<number\>, list: List\<A\>): Array\<A\>
 
 <p>
 
@@ -1170,15 +1170,15 @@ Slices a list between two indexes.
 export const slice: Slice = curry3(__slice)
 
 export type Slice = {
-  <A>(startIndex: number, endIndex: Maybe<number>, list: List<A>): List<A>
-  <A>(startIndex: number, endIndex: Maybe<number>): (list: List<A>) => List<A>
+  <A>(startIndex: number, endIndex: Maybe<number>, list: List<A>): Array<A>
+  <A>(startIndex: number, endIndex: Maybe<number>): (list: List<A>) => Array<A>
   <A>(startIndex: number): {
-    (endIndex: Maybe<number>, list: List<A>): List<A>
-    (endIndex: Maybe<number>): (list: List<A>) => List<A>
+    (endIndex: Maybe<number>, list: List<A>): Array<A>
+    (endIndex: Maybe<number>): (list: List<A>) => Array<A>
   }
 }
 
-function __slice<A>(startIndex: number, endIndex: Maybe<number>, list: List<A>): List<A> {
+function __slice<A>(startIndex: number, endIndex: Maybe<number>, list: List<A>): Array<A> {
   return arrayFrom(list).slice(startIndex, fromMaybe(void 0, endIndex))
 }
 
@@ -1188,7 +1188,7 @@ function __slice<A>(startIndex: number, endIndex: Maybe<number>, list: List<A>):
 <hr />
 
 
-#### sort\<A\>(comparator: Comparator\<A\>, list: List\<A\>): List\<A\>
+#### sort\<A\>(comparator: Comparator\<A\>, list: List\<A\>): Array\<A\>
 
 <p>
 
@@ -1205,11 +1205,11 @@ Sorts a `List`.
 export const sort: Sort = curry2(__sort)
 
 export type Sort = {
-  <A>(comparator: (a: A, b: A) => number, list: List<A>): List<A>
-  <A>(comparator: (a: A, b: A) => number): (list: List<A>) => List<A>
+  <A>(comparator: (a: A, b: A) => number, list: List<A>): Array<A>
+  <A>(comparator: (a: A, b: A) => number): (list: List<A>) => Array<A>
 }
 
-function __sort<A>(comparator: (a: A, b: A) => number, list: List<A>): List<A> {
+function __sort<A>(comparator: (a: A, b: A) => number, list: List<A>): Array<A> {
   return arrayFrom(list)
     .slice(0)
     .sort(comparator)
@@ -1252,7 +1252,7 @@ function __splitAt<A>(index: Index, list: List<A>): [List<A>, List<A>] {
 <hr />
 
 
-#### splitEvery\<A\>(amount: number, list: List\<A\>): List\<List\<A\>\>
+#### splitEvery\<A\>(amount: number, list: List\<A\>): Array\<Array\<A\>\>
 
 <p>
 
@@ -1269,10 +1269,10 @@ Splits a list into a list of lists containing `n` number of values.
 export const splitEvery: SplitEvery = curry2(function splitEvery<A>(
   amount: number,
   list: List<A>
-): List<List<A>> {
-  if (amount <= 0) return [list]
+): Array<Array<A>> {
+  if (amount <= 0) return [arrayFrom(list)]
 
-  const result = []
+  const result: Array<Array<A>> = []
   let i = 0
 
   while (i < list.length) result.push(slice(i, Maybe.of((i += amount)), list))
@@ -1281,8 +1281,8 @@ export const splitEvery: SplitEvery = curry2(function splitEvery<A>(
 })
 
 export type SplitEvery = {
-  <A>(amount: number, list: List<A>): List<List<A>>
-  <A>(amount: number): (list: List<A>) => List<List<A>>
+  <A>(amount: number, list: List<A>): Array<Array<A>>
+  <A>(amount: number): (list: List<A>) => Array<Array<A>>
 }
 
 ```
@@ -1291,7 +1291,7 @@ export type SplitEvery = {
 <hr />
 
 
-#### take\<A\>(n: number, list: List\<A\>): List\<A\>
+#### take\<A\>(n: number, list: List\<A\>): Array\<A\>
 
 <p>
 
@@ -1310,8 +1310,8 @@ export const take: Take = curry2(<A>(n: number, list: List<A>) =>
 )
 
 export type Take = {
-  <A>(n: number, list: List<A>): List<A>
-  <A>(n: number): (list: List<A>) => List<A>
+  <A>(n: number, list: List<A>): Array<A>
+  <A>(n: number): (list: List<A>) => Array<A>
 }
 
 ```
@@ -1320,7 +1320,7 @@ export type Take = {
 <hr />
 
 
-#### takeLast\<A\>(n: number, list: List\<A\>): List\<A\>
+#### takeLast\<A\>(n: number, list: List\<A\>): Array\<A\>
 
 <p>
 
@@ -1339,8 +1339,8 @@ export const takeLast: TakeLast = curry2(<A>(n: number, list: List<A>) =>
 )
 
 export type TakeLast = {
-  <A>(n: number, list: List<A>): List<A>
-  <A>(n: number): (list: List<A>) => List<A>
+  <A>(n: number, list: List<A>): Array<A>
+  <A>(n: number): (list: List<A>) => Array<A>
 }
 
 ```
@@ -1349,7 +1349,7 @@ export type TakeLast = {
 <hr />
 
 
-#### uniq\<A\>(list: List\<A\>): List\<A\>
+#### uniq\<A\>(list: List\<A\>): Array\<A\>
 
 <p>
 
@@ -1363,7 +1363,7 @@ Returns a `List` of unique values.
 
 ```typescript
 
-export function uniq<A>(list: List<A>): List<A> {
+export function uniq<A>(list: List<A>): Array<A> {
   return arrayFrom(new Set<A>(arrayFrom(list)))
 }
 
@@ -1391,7 +1391,7 @@ export const update: UpdateArity3 = curry3(function update<A>(
   index: number,
   value: A,
   list: List<A>
-): List<A> {
+): Array<A> {
   const length = list.length
   const newList = arrayFrom(list)
 
@@ -1408,7 +1408,7 @@ export const update: UpdateArity3 = curry3(function update<A>(
 <hr />
 
 
-#### without\<A\>(values: List\<A\>, list: List\<A\>): List\<A\>
+#### without\<A\>(values: List\<A\>, list: List\<A\>): Array\<A\>
 
 <p>
 
@@ -1425,11 +1425,11 @@ Returns a list without the specified values.
 export const without: Without = curry2(__without)
 
 export type Without = {
-  <A>(values: List<A>, list: List<A>): List<A>
-  <A>(values: List<A>): (list: List<A>) => List<A>
+  <A>(values: List<A>, list: List<A>): Array<A>
+  <A>(values: List<A>): (list: List<A>) => Array<A>
 }
 
-function __without<A>(values: List<A>, list: List<A>): List<A> {
+function __without<A>(values: List<A>, list: List<A>): Array<A> {
   const set = new Set(arrayFrom(values))
 
   return filter(x => !set.has(x), list)

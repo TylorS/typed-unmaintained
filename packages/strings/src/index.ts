@@ -22,7 +22,7 @@ export const startsWith = invoker(1, 'startsWith')
 export const trim = invoker(0, 'trim')
 /**
  * Curried function to call `String.prototype.split`
- * @name split(search: string | RegExp, str: string): List<string>
+ * @name split(search: string | RegExp, str: string): Array<string>
  */
 export const split = invoker(1, 'split')
 /**

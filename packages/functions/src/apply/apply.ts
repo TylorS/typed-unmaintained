@@ -1,18 +1,17 @@
 import { Apply } from './types'
-import { List } from '@typed/core'
 
 /**
  * Given a list of arguments and a function, applies the function with 
  * the given arguments.
- * @name apply<A>(list: List<any>, fn: (...args: Array<any>) => A): A
+ * @name apply<A>(list: ArrayLike<any>, fn: (...args: Array<any>) => A): A
  */
-export const apply: Apply = function<A>(list: List<any>, f?: (...args: Array<any>) => A) {
+export const apply: Apply = function<A>(list: ArrayLike<any>, f?: (...args: Array<any>) => A) {
   if (!f) return (f: (...args: Array<any>) => A) => __apply(list, f)
 
   return __apply(list, f)
 }
 
-function __apply<A>(list: List<any>, f: (...args: Array<any>) => A) {
+function __apply<A>(list: ArrayLike<any>, f: (...args: Array<any>) => A) {
   switch (list.length) {
     case 0:
       return f()

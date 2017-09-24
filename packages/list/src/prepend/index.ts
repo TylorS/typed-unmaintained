@@ -4,11 +4,11 @@ import { length } from '../length'
 
 /**
  * Puts at value at the beginning of a `List`.
- * @name prepend<A>(value: A, list: List<A>): List<A>
+ * @name prepend<A>(value: A, list: List<A>): Array<A>
  */
 export const prepend = curry2(__prepend)
 
-function __prepend<A>(value: A, list: List<A>): List<A> {
+function __prepend<A>(value: A, list: List<A>): Array<A> {
   const itemCount = length(list) + 1
   const newList = Array(itemCount)
 

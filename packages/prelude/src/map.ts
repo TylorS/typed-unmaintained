@@ -8,7 +8,7 @@ import { isPromiseLike } from '@typed/logic'
 /**
  * Map over the value contained in a data structure.
  * Works for `List`, `Maybe`, `Either`, and `PromiseLike` data strctures.
- * @name map<A, B>(f: (value: A, index: number) => B, list: List<A>): List<B>
+ * @name map<A, B>(f: (value: A, index: number) => B, list: List<A>): Array<B>
  */
 export const map: Map = curry2<any, any, any>(function map(f: (value: any) => any, list: any): any {
   if (isJust(list) || isNothing(list)) return maybeMap(f, list)
@@ -19,7 +19,7 @@ export const map: Map = curry2<any, any, any>(function map(f: (value: any) => an
 })
 
 export type Map = {
-  <A, B>(f: (value: A, index: number) => B, list: List<A>): List<B>
+  <A, B>(f: (value: A, index: number) => B, list: List<A>): Array<B>
   <A, B>(f: (value: A) => B, maybe: Maybe<A>): Maybe<B>
   <A, B>(f: (value: A) => B, promise: PromiseLike<A>): Promise<B>
   <A, B, C>(f: (value: B) => C, either: Either<A, B>): Either<A, C>
@@ -28,7 +28,7 @@ export type Map = {
 }
 
 export type MapArity1<A, B> = {
-  (list: List<A>): List<B>
+  (list: List<A>): Array<B>
   (maybe: Maybe<A>): Maybe<B>
   (promise: Promise<A>): Promise<B>
   <C>(either: Either<C, A>): Either<C, B>
