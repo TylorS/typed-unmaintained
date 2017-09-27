@@ -21,4 +21,4 @@ There are many single purpose packages that make up `Typed`.
 - [`@typed/maybe`](./packages/maybe) -- Well-typed and functional `Maybe`
 - [`@typed/objects`](./packages/objects) -- Collection of object-related functions
 - [`@typed/prelude`](./packages/prelude) -- Re-exports other `@typed` packages
-- [`@typed/strings`](./packages/string) -- Collection of string manipulation functions
+- [`@typed/strings`](./packages/strings) -- Collection of string manipulation functions
