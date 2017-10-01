@@ -1,6 +1,6 @@
 {
   "name": "@typed/math",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Math related functions",
   "main": "lib/index.js",
   "module": "lib.es2015/index.js",
@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@typed/core": "2.1.0",
-    "@typed/functions": "2.0.0",
-    "@typed/list": "2.0.0",
-    "@typed/maybe": "4.0.0"
+    "@typed/functions": "2.1.0",
+    "@typed/list": "2.1.0",
+    "@typed/maybe": "4.1.0"
   },
   "repository": {
     "type": "git",
