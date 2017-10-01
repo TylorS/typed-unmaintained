@@ -1,4 +1,4 @@
-# @typed/prelude -- 3.0.0
+# @typed/prelude -- 4.0.0
 
 The TypeScript standard library
 

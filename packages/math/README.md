@@ -1,4 +1,4 @@
-# @typed/math -- 2.1.0
+# @typed/math -- 2.2.0
 
 Math related functions
 

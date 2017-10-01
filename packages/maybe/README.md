@@ -1,4 +1,4 @@
-# @typed/maybe -- 4.1.0
+# @typed/maybe -- 5.0.0
 
 Well-typed Maybe data structure
 
