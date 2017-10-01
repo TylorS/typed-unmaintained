@@ -1,4 +1,4 @@
-# @typed/future -- 3.0.0
+# @typed/future -- 3.1.0
 
 Small future implemenatation
 

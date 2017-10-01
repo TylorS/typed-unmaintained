@@ -1,4 +1,4 @@
-# @typed/list -- 2.0.0
+# @typed/list -- 2.1.0
 
 Immutable List for TypeScript
 
@@ -402,6 +402,45 @@ function __dropLast<A>(quanity: number, list: List<A>): Array<A> {
 <hr />
 
 
+#### endsWith\<A\>(expected: List\<A\>, list: List\<A\>): boolean
+
+<p>
+
+Returns true if a list ends with a certain search.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const endsWith: EndsWith = curry2(__endsWith)
+
+export type EndsWith = {
+  <A>(expected: List<A>, list: List<A>): boolean
+  <A>(expected: List<A>): (list: List<A>) => boolean
+}
+
+function __endsWith<A>(expected: List<A>, list: List<A>): boolean {
+  const itemCount = length(list)
+  const expectedCount = length(expected)
+  const startingIndex = itemCount - expectedCount
+
+  if (startingIndex < 0) return false
+
+  for (let i = 0; i < expectedCount; ++i) if (expected[i] !== list[startingIndex + i]) return false
+
+  return true
+}
+
+```
+
+</details>
+<hr />
+
+
 #### filter\<A\>(predicate: (value: A, index: number) =\> boolean, list: List\<A\>): Array\<A\>
 
 <p>
@@ -665,6 +704,58 @@ export function head<A>(list: List<A>): Maybe<A> {
   const { view } = lensIndex<A>(HEAD_INDEX)
 
   return view(list)
+}
+
+```
+
+</details>
+<hr />
+
+
+#### include\<A\>(search: List\<A\>, list: List\<A\>): boolean
+
+<p>
+
+Returns true if a list contains a search value.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const includes: Includes = curry2(__includes)
+
+export type Includes = {
+  <A>(search: List<A>, list: List<A>): boolean
+  <A>(search: List<A>): (list: List<A>) => boolean
+}
+
+function __includes<A>(search: List<A>, list: List<A>): boolean {
+  const indexes = __indexesOf(search[0], list)
+
+  return indexes.some(__includesFromIndex(search, list))
+}
+
+function __includesFromIndex<A>(search: List<A>, list: List<A>) {
+  const searchCount = length(search)
+
+  return function(index: Index): boolean {
+    for (let i = 1; i < searchCount; ++i) if (search[i] !== list[index + i]) return false
+
+    return true
+  }
+}
+
+function __indexesOf<A>(value: A, list: List<A>): Array<Index> {
+  const itemCount = length(list)
+  const indexes = []
+
+  for (let i = 0; i < itemCount; ++i) if (list[i] === value) indexes.push(i)
+
+  return indexes
 }
 
 ```
@@ -1315,6 +1406,41 @@ export const splitEvery: SplitEvery = curry2(function splitEvery<A>(
 export type SplitEvery = {
   <A>(amount: number, list: List<A>): Array<Array<A>>
   <A>(amount: number): (list: List<A>) => Array<Array<A>>
+}
+
+```
+
+</details>
+<hr />
+
+
+#### startsWith\<A\>(search: List\<A\>, list: List\<A\>): boolean
+
+<p>
+
+Returns true if a List starts with a search value.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const startsWith: StartsWith = curry2(__startsWith)
+
+export type StartsWith = {
+  <A>(search: List<A>, list: List<A>): boolean
+  <A>(search: List<A>): (list: List<A>) => boolean
+}
+
+function __startsWith<A>(search: List<A>, list: List<A>): boolean {
+  const searchCount = length(search)
+
+  for (let i = 0; i < searchCount; ++i) if (search[i] !== list[i]) return false
+
+  return true
 }
 
 ```

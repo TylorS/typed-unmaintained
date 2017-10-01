@@ -1,4 +1,4 @@
-# @typed/strings -- 2.0.0
+# @typed/strings -- 3.0.0
 
 Well-typed functions for strings
 
@@ -12,72 +12,6 @@ npm install --save @typed/strings
 ## API Documentation
 
 All functions are curried!
-
-#### endsWith(search: string, str: string): boolean
-
-<p>
-
-Curried function to call `String.prototype.endsWith`
-
-</p>
-
-
-<details>
-<summary>See the code</summary>
-
-```typescript
-
-export const endsWith = invoker(1, 'endsWith')
-
-```
-
-</details>
-<hr />
-
-
-#### endsWith(startIndex: number, endIndex: number | void, str: string): boolean
-
-<p>
-
-Curried function to call `String.prototype.substring`
-
-</p>
-
-
-<details>
-<summary>See the code</summary>
-
-```typescript
-
-export const substring = invoker(2, 'substring')
-
-```
-
-</details>
-<hr />
-
-
-#### includes(search: string, str: string): boolean
-
-<p>
-
-Curried function to call `String.prototype.includes`
-
-</p>
-
-
-<details>
-<summary>See the code</summary>
-
-```typescript
-
-export const includes = invoker(1, 'includes')
-
-```
-
-</details>
-<hr />
-
 
 #### split(search: string | RegExp, str: string): Array\<string\>
 
@@ -93,7 +27,16 @@ Curried function to call `String.prototype.split`
 
 ```typescript
 
-export const split = invoker(1, 'split')
+export const split: Split = curry2(__split)
+
+export type Split = {
+  (separator: string | RegExp, str: string): Array<string>
+  (separator: string | RegExp): (str: string) => Array<string>
+}
+
+function __split(separator: string | RegExp, str: string): Array<string> {
+  return str.split(separator)
+}
 
 ```
 
@@ -101,11 +44,11 @@ export const split = invoker(1, 'split')
 <hr />
 
 
-#### startsWith(search: string, str: string): boolean
+#### substr(from: number, length: number | undefined, str: string): string
 
 <p>
 
-Curried function to call `String.prototype.startsWith`
+A curried function to call `String.prototype.substr`
 
 </p>
 
@@ -115,7 +58,20 @@ Curried function to call `String.prototype.startsWith`
 
 ```typescript
 
-export const startsWith = invoker(1, 'startsWith')
+export const substr: Substr = curry3(__substr)
+
+export type Substr = {
+  (from: number, length: number | undefined, str: string): string
+  (from: number, length: number | undefined): (str: string) => string
+  (from: number): {
+    (length: number | undefined, str: string): string
+    (length: number | undefined): (str: string) => string
+  }
+}
+
+function __substr(from: number, length: number | undefined, str: string): string {
+  return str.substr(from, length)
+}
 
 ```
 
@@ -123,11 +79,11 @@ export const startsWith = invoker(1, 'startsWith')
 <hr />
 
 
-#### substr(startIndex: number, length: number | void, str: string): boolean
+#### substring(from: number, to: number | undefined, str: string)
 
 <p>
 
-Curried function to call `String.prototype.substr`
+A curried function to call `String.prototype.substring`
 
 </p>
 
@@ -137,7 +93,20 @@ Curried function to call `String.prototype.substr`
 
 ```typescript
 
-export const substr = invoker(2, 'substr')
+export const substring: Substring = curry3(__substring)
+
+export type Substring = {
+  (from: number, to: number | undefined, str: string): string
+  (from: number, to: number | undefined): (str: string) => string
+  (from: number): {
+    (to: number | undefined, str: string): string
+    (to: number | undefined): (str: string) => string
+  }
+}
+
+function __substring(from: number, to: number | undefined, str: string): string {
+  return str.substring(from, to)
+}
 
 ```
 
@@ -149,7 +118,7 @@ export const substr = invoker(2, 'substr')
 
 <p>
 
-Curried function to call `String.prototype.toLowerCase`
+A function to call `String.prototype.toLowerCase`
 
 </p>
 
@@ -159,7 +128,7 @@ Curried function to call `String.prototype.toLowerCase`
 
 ```typescript
 
-export const toLowerCase = invoker(0, 'toLowerCase')
+export const toLowerCase = (str: string) => str.toLowerCase()
 
 ```
 
@@ -171,7 +140,7 @@ export const toLowerCase = invoker(0, 'toLowerCase')
 
 <p>
 
-Curried function to call `String.prototype.toUpperCase`
+A function to call `String.prototype.toUpperCase`
 
 </p>
 
@@ -181,7 +150,7 @@ Curried function to call `String.prototype.toUpperCase`
 
 ```typescript
 
-export const toUpperCase = invoker(0, 'toUpperCase')
+export const toUpperCase = (str: string) => str.toUpperCase()
 
 ```
 
@@ -193,7 +162,7 @@ export const toUpperCase = invoker(0, 'toUpperCase')
 
 <p>
 
-Curried function to call `String.prototype.trim`
+A function to call `String.prototype.trim`
 
 </p>
 
@@ -203,7 +172,7 @@ Curried function to call `String.prototype.trim`
 
 ```typescript
 
-export const trim = invoker(0, 'trim')
+export const trim = (str: string): string => str.trim()
 
 ```
 

@@ -1,4 +1,4 @@
-# @typed/math -- 2.0.0
+# @typed/math -- 2.1.0
 
 Math related functions
 
@@ -236,6 +236,37 @@ Negates a number.
 ```typescript
 
 export const negate = (n: number): number => -n
+
+```
+
+</details>
+<hr />
+
+
+#### pow(exponent: number, base: number): number
+
+<p>
+
+Applies a base to the exponent power.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const pow: Pow = curry2(__pow)
+
+export type Pow = {
+  (exponent: number, base: number): number
+  (exponent: number): (base: number) => number
+}
+
+function __pow(exponent: number, base: number): number {
+  return Math.pow(base, exponent)
+}
 
 ```
 
