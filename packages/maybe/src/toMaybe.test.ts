@@ -16,11 +16,11 @@ export const test: Test = describe(`toMaybe`, [
   ]),
 
   given(`null`, [
-    it(`returns Just null`, ({ equal }) => {
+    it(`returns Nothing`, ({ ok }) => {
       const value = null
-      const maybe = toMaybe<null>(value)
+      const maybe = toMaybe(value)
 
-      if (isJust(maybe)) equal(value, fromJust(maybe))
+      ok(isNothing(maybe))
     }),
   ]),
 
