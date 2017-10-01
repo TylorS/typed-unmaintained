@@ -1,7 +1,6 @@
 import { Index, List } from '../types'
 
 import { curry2 } from '@typed/functions'
-import { drop } from '../drop'
 import { length } from '../length'
 
 /**
@@ -18,7 +17,7 @@ export type Includes = {
 function __includes<A>(search: List<A>, list: List<A>): boolean {
   const indexes = __indexesOf(search[0], list)
 
-  return indexes.some(__includesFromIndex(drop(1, search), list))
+  return indexes.some(__includesFromIndex(search, list))
 }
 
 function __includesFromIndex<A>(search: List<A>, list: List<A>) {

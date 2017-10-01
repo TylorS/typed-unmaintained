@@ -20,4 +20,13 @@ export const test: Test = describe(`includes`, [
       notOk(includes(search, str))
     }),
   ]),
+
+  given(`two identical arrays`, [
+    it(`returns true`, ({ ok }) => {
+      const a = [0, 1, 2]
+      const b = [0, 1, 2]
+
+      ok(includes(a, b))
+    }),
+  ]),
 ])
