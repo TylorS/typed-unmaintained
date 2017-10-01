@@ -16,6 +16,7 @@ export {
   chainLeft,
 } from '@typed/either'
 export {
+  __,
   always,
   apply,
   compose,
@@ -41,6 +42,7 @@ export {
   descend,
   drop,
   dropLast,
+  endsWith,
   filter,
   find,
   findIndex,
@@ -50,6 +52,7 @@ export {
   forEach,
   groupBy,
   head,
+  includes,
   indexOf,
   insert,
   isList,
@@ -68,6 +71,7 @@ export {
   sort,
   splitAt,
   splitEvery,
+  startsWith,
   take,
   takeLast,
   uniq,
@@ -112,6 +116,7 @@ export {
   modulo,
   multiply,
   negate,
+  pow,
   product,
   subtract,
   sum,
@@ -142,14 +147,4 @@ export {
   set,
   values,
 } from '@typed/objects'
-export {
-  endsWith,
-  includes,
-  split,
-  trim,
-  startsWith,
-  toLowerCase,
-  toUpperCase,
-  substr,
-  substring,
-} from '@typed/strings'
+export { split, trim, toLowerCase, toUpperCase, substr, substring } from '@typed/strings'
