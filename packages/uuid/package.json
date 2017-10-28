@@ -1,0 +1,41 @@
+{
+  "name": "@typed/uuid",
+  "version": "0.0.0",
+  "description": "Cross-platform TypeScript implementation of UUID",
+  "main": "lib/index.js",
+  "module": "lib.es2015/index.js",
+  "jsnext:main": "lib.es2015/index.js",
+  "typings": "lib/index.d.ts",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "cd ../../ && node ./tools/build.js --only uuid",
+    "test": "yarn test:lint && yarn test:unit",
+    "test:unit": "../../node_modules/.bin/typed-test 'src/*.test.ts' 'src/**/*.test.ts' --browser --config ./webpack.config.js",
+    "test:lint": "../../node_modules/.bin/prettier --write --print-width 100 --tab-width 2 --no-semi --single-quote --trailing-comma es5 --parser typescript src/**/*.ts"
+  },
+  "dependencies": {
+    "@typed/functions": "2.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TylorS/typed.git"
+  },
+  "keywords": [
+    "typed",
+    "typescript",
+    "uuid",
+    "browser",
+    "node",
+    "cross-platform"
+  ],
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TylorS/typed/issues"
+  },
+  "homepage": "https://github.com/TylorS/typed#readme",
+  "devDependencies": {
+    "@types/node": "8.0.47",
+    "webpack-node-externals": "1.6.0"
+  }
+}
