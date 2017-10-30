@@ -1,3 +1,3 @@
 export * from './types'
-export * from './createUuid'
+export * from './uuid'
 export * from './isUuid'

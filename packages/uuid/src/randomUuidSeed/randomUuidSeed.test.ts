@@ -3,13 +3,11 @@ import { Test, describe, it } from '@typed/test'
 import { generateRandomNumbers } from './generateRandomNumbers'
 
 export const test: Test = describe(`generateRandomNumbers`, [
-  it(`returns an ArrayLike of numbers 16 values in length`, ({ equal }) => {
+  it(`returns an object with keys numbered 0-15 with values of type number`, ({ equal }) => {
     const sut = generateRandomNumbers()
     const typeOf = <A>(type: string) => (value: A) => equal(type, typeof value)
     const isNumber = typeOf('number')
-    const expectedLength = 16
 
-    equal(expectedLength, sut.length)
     isNumber(sut[0])
     isNumber(sut[1])
     isNumber(sut[2])

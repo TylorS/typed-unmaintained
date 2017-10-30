@@ -29,29 +29,6 @@ export type Uuid = string
 ```
 
 
-#### createUuid(): Uuid
-
-<p>
-
-Creates a universally unique identifier that works in both browser and Node.js
-environments.
-
-</p>
-
-
-<details>
-<summary>See the code</summary>
-
-```typescript
-
-export const createUuid = pipe(generateRandomNumbers, generateUuid) as () => Uuid
-
-```
-
-</details>
-<hr />
-
-
 #### isUuid(value: string): value is Uuid
 
 <p>
@@ -69,6 +46,29 @@ Returns `true` if a string is a UUID.
 export function isUuid(value: string): value is Uuid {
   return uuidPattern.test(value)
 }
+
+```
+
+</details>
+<hr />
+
+
+#### uuid(): Uuid
+
+<p>
+
+Creates a universally unique identifier that works in both browser and Node.js
+environments.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const uuid = pipe(randomUuidSeed, uuid4) as () => Uuid
 
 ```
 

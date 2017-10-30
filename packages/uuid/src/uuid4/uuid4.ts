@@ -1,7 +1,7 @@
-import { Uuid } from './types'
-import { UuidArray } from './generateRandomNumbers'
+import { Uuid } from '../types'
+import { UuidArray } from '../randomUuidSeed'
 
-export function generateUuid(randomNumbers: UuidArray): Uuid {
+export function uuid4(randomNumbers: UuidArray): Uuid {
   return (
     randomNumbers[0].toString(16) +
     randomNumbers[1].toString(16) +
