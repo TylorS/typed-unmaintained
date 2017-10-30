@@ -10,7 +10,7 @@
   "scripts": {
     "build": "cd ../../ && node ./tools/build.js --only uuid",
     "test": "yarn test:lint && yarn test:unit",
-    "test:unit": "../../node_modules/.bin/typed-test 'src/*.test.ts' 'src/**/*.test.ts' --browser --config ./webpack.config.js",
+    "test:unit": "../../node_modules/.bin/typed-test 'src/*.test.ts' 'src/**/*.test.ts'",
     "test:lint": "../../node_modules/.bin/prettier --write --print-width 100 --tab-width 2 --no-semi --single-quote --trailing-comma es5 --parser typescript src/**/*.ts"
   },
   "dependencies": {
@@ -35,7 +35,6 @@
   },
   "homepage": "https://github.com/TylorS/typed#readme",
   "devDependencies": {
-    "@types/node": "8.0.47",
-    "webpack-node-externals": "1.6.0"
+    "@types/node": "8.0.47"
   }
 }
