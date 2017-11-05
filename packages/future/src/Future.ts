@@ -12,7 +12,15 @@ export interface Future<A, B> {
  * @name Fork
  * @type
  */
-export type Fork<A, B> = (reject: (value: A) => void, resolve: (value: B) => void) => void
+export type Fork<A, B> = (reject: (value: A) => void, resolve: (value: B) => void) => Disposable
+
+/**
+ * Disposable type signature. A Disposable is a data-structure used to
+ * cleanup resources or to cancel scheduled work.
+ */
+export interface Disposable {
+  readonly dispose: () => void
+}
 
 export namespace Future {
   /**
@@ -28,7 +36,7 @@ export namespace Future {
    * @name Future.of<A, B = any>(value: A): Future<B, A>
    */
   export function of<A, B = any>(value: A): Future<B, A> {
-    return create((_, resolve) => resolve(value))
+    return create((_, resolve) => defer(resolve, value))
   }
 
   /**
@@ -36,6 +44,13 @@ export namespace Future {
    * @name Future.reject<A, B = any>(value: A): Future<A, B>
    */
   export function reject<A, B = any>(value: A): Future<A, B> {
-    return create(reject => reject(value))
+    return create(reject => defer(reject, value))
   }
+}
+
+function defer<A>(f: (value: A) => void, value: A): Disposable {
+  const id = setTimeout(f, 0, value)
+  const dispose = () => clearTimeout(id)
+
+  return { dispose }
 }
