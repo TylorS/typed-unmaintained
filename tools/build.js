@@ -17,7 +17,8 @@ let allPackages = [
   'objects',
   'strings',
   'future',
-  'prelude'
+  'prelude',
+  'uuid'
 ]
 
 if (readdirSync(PACKAGES_DIRECTORY).length > allPackages.length) {
