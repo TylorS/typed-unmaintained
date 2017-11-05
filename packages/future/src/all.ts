@@ -16,7 +16,7 @@ export function all<A, B>(futures: ArrayLike<Future<A, B>>): Future<A, ReadonlyA
   return Future.create<A, ReadonlyArray<B>>((reject, resolve) => {
     const disposables: Array<Disposable> = []
 
-    for (let i = 0; i < futures.length; ++i) {
+    for (let i = 0; i < futureCount; ++i) {
       const success = (value: B) => {
         values[i] = value
         --remaining
