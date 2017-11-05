@@ -1,3 +1,1 @@
-import { isNotUndefined } from './helpers'
-
-export const isBrowser: boolean = isNotUndefined(crypto) || isNotUndefined(msCrypto)
+export const isBrowser: boolean = typeof crypto !== 'undefined' || typeof msCrypto !== 'undefined'

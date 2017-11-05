@@ -1,10 +1,10 @@
 import { Test, describe, it } from '@typed/test'
 
-import { generateRandomNumbers } from './generateRandomNumbers'
+import { randomUuidSeed } from './randomUuidSeed'
 
-export const test: Test = describe(`generateRandomNumbers`, [
+export const test: Test = describe(`randomUuidSeed`, [
   it(`returns an object with keys numbered 0-15 with values of type number`, ({ equal }) => {
-    const sut = generateRandomNumbers()
+    const sut = randomUuidSeed()
     const typeOf = <A>(type: string) => (value: A) => equal(type, typeof value)
     const isNumber = typeOf('number')
 
