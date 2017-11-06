@@ -1,3 +1,8 @@
+import { Disposable } from '@most/types'
+import { disposeOnce } from '@most/disposable'
+
+export { Disposable } from '@most/types'
+
 /**
  * Asynchronous data-structure similar to a Promise, but lazy.
  * @name Future
@@ -14,21 +19,32 @@ export interface Future<A, B> {
  */
 export type Fork<A, B> = (reject: (value: A) => void, resolve: (value: B) => void) => Disposable
 
-/**
- * Disposable type signature. A Disposable is a data-structure used to
- * cleanup resources or to cancel scheduled work.
- */
-export interface Disposable {
-  readonly dispose: () => void
-}
-
 export namespace Future {
   /**
    * Creates a `Future` given a `Fork` function.
    * @name Future.create<A, B>(fork: Fork<A, B>): Future<A, B>
    */
   export function create<A, B>(fork: Fork<A, B>): Future<A, B> {
-    return { fork }
+    return {
+      fork: (reject: (value: A) => void, resolve: (value: B) => void): Disposable => {
+        let settled = false
+        function isUnsettled(): boolean {
+          if (settled) return false
+
+          settled = true
+
+          return true
+        }
+
+        const disposable = disposeOnce(
+          fork(value => isUnsettled() && reject(value), value => isUnsettled() && resolve(value))
+        )
+
+        const dispose = () => disposable.dispose()
+
+        return { dispose }
+      },
+    }
   }
 
   /**

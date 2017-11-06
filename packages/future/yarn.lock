@@ -2,20 +2,20 @@
 # yarn lockfile v1
 
 
-"@most/disposable@0.13.1":
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/@most/disposable/-/disposable-0.13.1.tgz#9bfa07ebff9392c72afd0fc647dcd89a42d1d40c"
+"@most/disposable@1.0.0-beta.1":
+  version "1.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@most/disposable/-/disposable-1.0.0-beta.1.tgz#15896fcba145b47e3e8e481e6e58828343dab258"
   dependencies:
     "@most/prelude" "^1.6.4"
-    "@most/types" "^0.11.1"
+    "@most/types" "^1.0.0-beta.1"
 
 "@most/prelude@^1.6.4":
   version "1.6.4"
   resolved "https://registry.yarnpkg.com/@most/prelude/-/prelude-1.6.4.tgz#254ab6e22c0d4e7cb19e6ec1c966b75f57317f25"
 
-"@most/types@^0.11.1":
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/@most/types/-/types-0.11.1.tgz#5e305e0e346c5b01f1ebdeec4c1dfa5b189b5f9d"
+"@most/types@1.0.0-beta.1", "@most/types@^1.0.0-beta.1":
+  version "1.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@most/types/-/types-1.0.0-beta.1.tgz#db2f85cb4aa1c6a3ec1a4b2d868dc6e522c2ed11"
 
 "@typed/core@2.1.0":
   version "2.1.0"
