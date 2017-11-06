@@ -1,5 +1,7 @@
 import { Disposable, Future } from './Future'
+import { append, reduce } from '@typed/list'
 
+import { disposeAll } from '@most/disposable'
 import { fork } from './fork'
 
 /**
@@ -11,26 +13,33 @@ import { fork } from './fork'
 export function all<A, B>(futures: ArrayLike<Future<A, B>>): Future<A, ReadonlyArray<B>> {
   const { length: futureCount } = futures
   const values: Array<B> = Array(futureCount)
-  let remaining = futureCount
+  const remaining: Remaining = { count: futureCount }
 
-  return Future.create<A, ReadonlyArray<B>>((reject, resolve) => {
-    const disposables: Array<Disposable> = []
-
-    for (let i = 0; i < futureCount; ++i) {
-      const success = (value: B) => {
-        values[i] = value
-        --remaining
-
-        if (remaining === 0) resolve(values)
-      }
-
-      disposables[i] = fork(reject, success, futures[i])
-    }
-
-    return { dispose: () => disposables.forEach(dispose) }
-  })
+  return Future.create<A, ReadonlyArray<B>>((reject, resolve) =>
+    disposeAll(reduce(forkFuture<A, B>(reject, resolve, values, remaining), [], futures))
+  )
 }
 
-function dispose(disposable: Disposable): void {
-  disposable.dispose()
+type Remaining = { count: number }
+
+function forkFuture<A, B>(
+  reject: (value: A) => void,
+  resolve: (value: ReadonlyArray<B>) => void,
+  values: Array<B>,
+  remaining: Remaining
+) {
+  return (disposables: Array<Disposable>, future: Future<A, B>, index: number): Array<Disposable> =>
+    append(
+      fork(
+        reject,
+        value => {
+          values[index] = value
+          remaining.count--
+
+          if (remaining.count === 0) resolve(values)
+        },
+        future
+      ),
+      disposables
+    )
 }
