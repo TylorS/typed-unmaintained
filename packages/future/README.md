@@ -24,7 +24,7 @@ Fork function signature used by Future.
 
 ```typescript
 
-export type Fork<A, B> = (reject: (value: A) => void, resolve: (value: B) => void) => void
+export type Fork<A, B> = (reject: (value: A) => void, resolve: (value: B) => void) => Disposable
 
 ```
 
@@ -53,6 +53,12 @@ export interface Future<A, B> {
 
 Creates a `Future` given a `Fork` function.
 
+**Note:** It is the responsibility of the caller to `Future.create` that
+neither of the 2 supplied functions will be invoked until the caller has been
+able to return it's `Disposable`. If you looking to use `Future` for something
+naturally synchronous, [@typed/either](https://github.com/TylorS/typed/tree/master/either)
+is likely a better choice for your use case.
+
 </p>
 
 
@@ -62,7 +68,26 @@ Creates a `Future` given a `Fork` function.
 ```typescript
 
 export function create<A, B>(fork: Fork<A, B>): Future<A, B> {
-  return { fork }
+  return {
+    fork: (reject: (value: A) => void, resolve: (value: B) => void): Disposable => {
+      let settled = false
+      function isUnsettled(): boolean {
+        if (settled) return false
+
+        settled = true
+
+        return true
+      }
+
+      const disposable = disposeOnce(
+        fork(value => isUnsettled() && reject(value), value => isUnsettled() && resolve(value))
+      )
+
+      const dispose = () => disposable.dispose()
+
+      return { dispose }
+    },
+  }
 }
 
 ```
@@ -86,7 +111,7 @@ Creates a `Future` which will always fork to the right with the given value.
 ```typescript
 
 export function of<A, B = any>(value: A): Future<B, A> {
-  return create((_, resolve) => resolve(value))
+  return create((_, resolve) => defer(resolve, value))
 }
 
 ```
@@ -110,8 +135,15 @@ Creates a `Future` which will always fork to the left with the given value.
 ```typescript
 
 export function reject<A, B = any>(value: A): Future<A, B> {
-  return create(reject => reject(value))
+  return create(reject => defer(reject, value))
 }
+}
+
+function defer<A>(f: (value: A) => void, value: A): Disposable {
+const id = setTimeout(f, 0, value)
+const dispose = () => clearTimeout(id)
+
+return { dispose }
 }
 
 ```
@@ -125,7 +157,7 @@ export function reject<A, B = any>(value: A): Future<A, B> {
 <p>
 
 Creates a `Future` that concurrently forks all of the given `Futures` resolving
-with an Array of their values, or rejecting if any of the futures reject. Conceptually 
+with an Array of their values, or rejecting if any of the futures reject. Conceptually
 the same as to `Promise.all`.
 
 </p>
@@ -137,15 +169,37 @@ the same as to `Promise.all`.
 ```typescript
 
 export function all<A, B>(futures: ArrayLike<Future<A, B>>): Future<A, ReadonlyArray<B>> {
-  return Future.create<A, ReadonlyArray<B>>((reject, resolve) => {
-    const promises: Array<Promise<B>> = []
+  const { length: futureCount } = futures
+  const values: Array<B> = Array(futureCount)
+  const remaining: Remaining = { count: futureCount }
 
-    for (let i = 0; i < futures.length; ++i) promises[i] = toPromise(futures[i])
+  return Future.create<A, ReadonlyArray<B>>((reject, resolve) =>
+    disposeAll(reduce(forkFuture<A, B>(reject, resolve, values, remaining), [], futures))
+  )
+}
 
-    Promise.all(promises)
-      .then(resolve)
-      .catch(reject)
-  })
+type Remaining = { count: number }
+
+function forkFuture<A, B>(
+  reject: (value: A) => void,
+  resolve: (value: ReadonlyArray<B>) => void,
+  values: Array<B>,
+  remaining: Remaining
+) {
+  return (disposables: Array<Disposable>, future: Future<A, B>, index: number): Array<Disposable> =>
+    append(
+      fork(
+        reject,
+        value => {
+          values[index] = value
+          remaining.count--
+
+          if (remaining.count === 0) resolve(values)
+        },
+        future
+      ),
+      disposables
+    )
 }
 
 ```
@@ -190,7 +244,7 @@ export type FutureAp = {
 
 <p>
 
-Returns a `Future` that is the result of calling `f` with the resolved 
+Returns a `Future` that is the result of calling `f` with the resolved
 value of another future. Similar to `Promise.then`.
 
 </p>
@@ -204,9 +258,9 @@ value of another future. Similar to `Promise.then`.
 export const chain: FutureChain = curry2(__chain)
 
 function __chain<A, B, C>(f: (value: B) => Future<A, C>, future: Future<A, B>): Future<A, C> {
-  return Future.create((reject, resolve) => {
+  return Future.create((reject, resolve) =>
     future.fork(reject, value => f(value).fork(reject, resolve))
-  })
+  )
 }
 
 export type FutureChain = {
@@ -224,7 +278,7 @@ export type FutureChain = {
 
 <p>
 
-Returns a `Future` that is the result of calling `f` with the rejected 
+Returns a `Future` that is the result of calling `f` with the rejected
 value of another future. Similar to `Promise.catch`.
 
 </p>
@@ -238,9 +292,9 @@ value of another future. Similar to `Promise.catch`.
 export const chainLeft: FutureChainLeft = curry2(__chainLeft)
 
 function __chainLeft<A, B, C>(f: (value: A) => Future<C, B>, future: Future<A, B>): Future<C, B> {
-  return Future.create((reject, resolve) => {
+  return Future.create((reject, resolve) =>
     future.fork(value => f(value).fork(reject, resolve), resolve)
-  })
+  )
 }
 
 export type FutureChainLeft = {
@@ -254,7 +308,7 @@ export type FutureChainLeft = {
 <hr />
 
 
-#### fork\<A, B\>(left: (value: A) =\> any, right: (value: B) =\> any, future: Future\<A, B\>): void
+#### fork\<A, B\>(left: (value: A) =\> any, right: (value: B) =\> any, future: Future\<A, B\>): Disposable
 
 <p>
 
@@ -274,15 +328,17 @@ function forkFuture<A, B>(
   left: (value: A) => any,
   right: (value: B) => any,
   future: Future<A, B>
-): void {
-  future.fork(left, right)
+): Disposable {
+  return future.fork(left, right)
 }
 
 export interface ForkFn {
-  <A, B>(left: (value: A) => any, right: (value: B) => any, future: Future<A, B>): void
-  <A, B>(left: (value: A) => any): (right: (value: B) => any, future: Future<A, B>) => void
-  <A, B>(left: (value: A) => any, right: (value: B) => any): (future: Future<A, B>) => void
-  <A, B>(left: (value: A) => any): (right: (value: B) => any) => (future: Future<A, B>) => void
+  <A, B>(left: (value: A) => any, right: (value: B) => any, future: Future<A, B>): Disposable
+  <A, B>(left: (value: A) => any): (right: (value: B) => any, future: Future<A, B>) => Disposable
+  <A, B>(left: (value: A) => any, right: (value: B) => any): (future: Future<A, B>) => Disposable
+  <A, B>(left: (value: A) => any): (
+    right: (value: B) => any
+  ) => (future: Future<A, B>) => Disposable
 }
 
 ```
