@@ -22,6 +22,12 @@ export type Fork<A, B> = (reject: (value: A) => void, resolve: (value: B) => voi
 export namespace Future {
   /**
    * Creates a `Future` given a `Fork` function.
+   *
+   * **Note:** It is the responsibility of the caller to `Future.create` that
+   * neither of the 2 supplied functions will be invoked until the caller has been
+   * able to return it's `Disposable`. If you looking to use `Future` for something
+   * naturally synchronous, [@typed/either](https://github.com/TylorS/typed/tree/master/either)
+   * is likely a better choice for your use case.
    * @name Future.create<A, B>(fork: Fork<A, B>): Future<A, B>
    */
   export function create<A, B>(fork: Fork<A, B>): Future<A, B> {
