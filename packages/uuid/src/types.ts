@@ -6,6 +6,4 @@
  * @name Uuid
  * @type
  */
-export interface Uuid extends String {
-  readonly _uuid: undefined
-}
+export type Uuid = string & { readonly _uuid: undefined }
