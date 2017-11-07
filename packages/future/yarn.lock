@@ -13,7 +13,11 @@
   version "1.6.4"
   resolved "https://registry.yarnpkg.com/@most/prelude/-/prelude-1.6.4.tgz#254ab6e22c0d4e7cb19e6ec1c966b75f57317f25"
 
-"@most/types@1.0.0-beta.1", "@most/types@^1.0.0-beta.1":
+"@most/types@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@most/types/-/types-1.0.0.tgz#5c301d2437342a1b82e38463fdb94e1bafe2c6d9"
+
+"@most/types@^1.0.0-beta.1":
   version "1.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/@most/types/-/types-1.0.0-beta.1.tgz#db2f85cb4aa1c6a3ec1a4b2d868dc6e522c2ed11"
 
