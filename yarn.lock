@@ -14,36 +14,36 @@
   version "0.30.0"
   resolved "https://registry.yarnpkg.com/167/-/167-0.30.0.tgz#8e571e64851bebe8dced5723b48a07ab297b5b9b"
 
-"@most/core@0.14.0":
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/@most/core/-/core-0.14.0.tgz#d7434bceffca1a74fb8cd42a67356f70677b86c8"
+"@most/core@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@most/core/-/core-1.0.1.tgz#d1a876150827172de3ffb264285e776624496e6b"
   dependencies:
-    "@most/disposable" "^0.13.1"
+    "@most/disposable" "^1.0.0"
     "@most/prelude" "^1.6.4"
-    "@most/scheduler" "^0.13.1"
-    "@most/types" "^0.11.1"
+    "@most/scheduler" "^1.0.1"
+    "@most/types" "^1.0.0"
 
-"@most/disposable@0.13.1", "@most/disposable@^0.13.1":
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/@most/disposable/-/disposable-0.13.1.tgz#9bfa07ebff9392c72afd0fc647dcd89a42d1d40c"
+"@most/disposable@1.0.0", "@most/disposable@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@most/disposable/-/disposable-1.0.0.tgz#3d88ab1617ed09e3c9a8503bc9ad01196319bc18"
   dependencies:
     "@most/prelude" "^1.6.4"
-    "@most/types" "^0.11.1"
+    "@most/types" "^1.0.0"
 
 "@most/prelude@^1.6.4":
   version "1.6.4"
   resolved "https://registry.yarnpkg.com/@most/prelude/-/prelude-1.6.4.tgz#254ab6e22c0d4e7cb19e6ec1c966b75f57317f25"
 
-"@most/scheduler@0.13.1", "@most/scheduler@^0.13.1":
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/@most/scheduler/-/scheduler-0.13.1.tgz#38b7cb13b81e16e3c3ef4964269d4aa9278e2e99"
+"@most/scheduler@1.0.1", "@most/scheduler@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@most/scheduler/-/scheduler-1.0.1.tgz#aaa6611c0989c83103148a8c2cd7e090fd9a68dc"
   dependencies:
     "@most/prelude" "^1.6.4"
-    "@most/types" "^0.11.1"
+    "@most/types" "^1.0.0"
 
-"@most/types@0.11.1", "@most/types@^0.11.1":
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/@most/types/-/types-0.11.1.tgz#5e305e0e346c5b01f1ebdeec4c1dfa5b189b5f9d"
+"@most/types@1.0.0", "@most/types@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@most/types/-/types-1.0.0.tgz#5c301d2437342a1b82e38463fdb94e1bafe2c6d9"
 
 "@typed/assertions@1.1.0":
   version "1.1.0"
@@ -52,15 +52,15 @@
     "167" "0.36.0"
     assertion-error-diff "^1.0.0"
 
-"@typed/test@4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@typed/test/-/test-4.0.0.tgz#68fe177b502fe355f1f5e91984e0718855165993"
+"@typed/test@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@typed/test/-/test-5.0.0.tgz#c683d76c00db8a59f82e705a3f3d051df1d3820f"
   dependencies:
     "167" "0.43.0"
-    "@most/core" "0.14.0"
-    "@most/disposable" "0.13.1"
-    "@most/scheduler" "0.13.1"
-    "@most/types" "0.11.1"
+    "@most/core" "1.0.1"
+    "@most/disposable" "1.0.0"
+    "@most/scheduler" "1.0.1"
+    "@most/types" "1.0.0"
     "@typed/assertions" "1.1.0"
     assertion-error-diff "1.0.0"
     body-parser "1.18.2"
@@ -70,15 +70,15 @@
     glob-expand "0.2.1"
     html-webpack-plugin "2.30.1"
     james-browser-launcher "1.3.1"
-    module-alias "2.0.1"
+    module-alias "2.0.2"
     rimraf "2.6.2"
     tmp "0.0.33"
-    ts-loader "2.3.7"
+    ts-loader "3.1.1"
     typed-colors "1.0.0"
     typed-figures "1.0.0"
-    webpack "3.6.0"
-    webpack-merge "4.1.0"
-    yargs "9.0.1"
+    webpack "3.8.1"
+    webpack-merge "4.1.1"
+    yargs "10.0.3"
 
 JSONStream@^1.0.4:
   version "1.3.1"
@@ -524,6 +524,14 @@ chalk@^1.0.0, chalk@^1.1.1, chalk@^1.1.3:
 chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.1.0.tgz#ac5becf14fa21b99c6c92ca7a7d7cfd5b17e743e"
+  dependencies:
+    ansi-styles "^3.1.0"
+    escape-string-regexp "^1.0.5"
+    supports-color "^4.0.0"
+
+chalk@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.3.0.tgz#b5ea48efc9c1793dccc9b4767c93914d3f2d52ba"
   dependencies:
     ansi-styles "^3.1.0"
     escape-string-regexp "^1.0.5"
@@ -2610,9 +2618,9 @@ modify-values@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/modify-values/-/modify-values-1.0.0.tgz#e2b6cdeb9ce19f99317a53722f3dbf5df5eaaab2"
 
-module-alias@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/module-alias/-/module-alias-2.0.1.tgz#7562c0fe839f195ac809292624634ba7c453aecb"
+module-alias@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/module-alias/-/module-alias-2.0.2.tgz#6af6b3a638a4b5460ddd6bc7705ce7b4cb27c9a5"
 
 moment@^2.6.0:
   version "2.18.1"
@@ -3701,11 +3709,11 @@ trim-off-newlines@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-off-newlines/-/trim-off-newlines-1.0.1.tgz#9f9ba9d9efa8764c387698bcbfeb2c848f11adb3"
 
-ts-loader@2.3.7:
-  version "2.3.7"
-  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-2.3.7.tgz#a9028ced473bee12f28a75f9c5b139979d33f2fc"
+ts-loader@3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-3.1.1.tgz#602d93c12029eaf8fa1ee478a90785d40c5f6658"
   dependencies:
-    chalk "^2.0.1"
+    chalk "^2.3.0"
     enhanced-resolve "^3.0.0"
     loader-utils "^1.0.2"
     semver "^5.0.1"
@@ -3875,9 +3883,9 @@ wcwidth@^1.0.0:
   dependencies:
     defaults "^1.0.3"
 
-webpack-merge@4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-4.1.0.tgz#6ad72223b3e0b837e531e4597c199f909361511e"
+webpack-merge@4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-4.1.1.tgz#f1197a0a973e69c6fbeeb6d658219aa8c0c13555"
   dependencies:
     lodash "^4.17.4"
 
@@ -3888,9 +3896,9 @@ webpack-sources@^1.0.1:
     source-list-map "^2.0.0"
     source-map "~0.5.3"
 
-webpack@3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.6.0.tgz#a89a929fbee205d35a4fa2cc487be9cbec8898bc"
+webpack@3.8.1:
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.8.1.tgz#b16968a81100abe61608b0153c9159ef8bb2bd83"
   dependencies:
     acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"
@@ -4020,23 +4028,28 @@ yargs-parser@^7.0.0:
   dependencies:
     camelcase "^4.1.0"
 
-yargs@9.0.1:
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-9.0.1.tgz#52acc23feecac34042078ee78c0c007f5085db4c"
+yargs-parser@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-8.0.0.tgz#21d476330e5a82279a4b881345bf066102e219c6"
   dependencies:
     camelcase "^4.1.0"
+
+yargs@10.0.3:
+  version "10.0.3"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-10.0.3.tgz#6542debd9080ad517ec5048fb454efe9e4d4aaae"
+  dependencies:
     cliui "^3.2.0"
     decamelize "^1.1.1"
+    find-up "^2.1.0"
     get-caller-file "^1.0.1"
     os-locale "^2.0.0"
-    read-pkg-up "^2.0.0"
     require-directory "^2.1.1"
     require-main-filename "^1.0.1"
     set-blocking "^2.0.0"
     string-width "^2.0.0"
     which-module "^2.0.0"
     y18n "^3.2.1"
-    yargs-parser "^7.0.0"
+    yargs-parser "^8.0.0"
 
 yargs@^1.3.3:
   version "1.3.3"
