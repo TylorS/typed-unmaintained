@@ -60,7 +60,8 @@ export function of<A>(value: A): Just<A> {
 
 <p>
 
-Creates a Maybe containg a value
+Creates a Maybe containing a value. If the value is `undefined` or `null`
+a `Nothing` will be returned. All other values will be wrapped in a `Just`.
 
 </p>
 
@@ -70,7 +71,7 @@ Creates a Maybe containg a value
 
 ```typescript
 
-export const of: <A>(value: A) => Maybe<A> = Just.of
+export const of: <A>(value: A) => Maybe<A> = toMaybe
 }
 
 ```
