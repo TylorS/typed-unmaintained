@@ -1,4 +1,4 @@
-# @typed/prelude -- 4.0.0
+# @typed/prelude -- 5.0.0
 
 The TypeScript standard library
 
@@ -125,6 +125,7 @@ export {
   not,
   or,
   propEq,
+  propOr,
   tryCatch,
 } from '@typed/logic'
 export {
@@ -150,7 +151,6 @@ export {
   Just,
   Nothing,
   Maybe,
-  toMaybe,
   combine,
   combineArray,
 } from '@typed/maybe'

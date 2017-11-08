@@ -1,4 +1,4 @@
-# @typed/lenses -- 2.2.0
+# @typed/lenses -- 2.3.0
 
 Well-typed functional lenses
 
@@ -90,7 +90,7 @@ function __lens<A, B>(getter: (a: A) => B | void, setter: (value: B, a: A) => A)
   }
 
   function view(a: A): Maybe<B> {
-    return toMaybe(getter(a))
+    return Maybe.of(getter(a))
   }
 
   return { view, updateAt: curry2(updateAt) }

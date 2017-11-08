@@ -1,4 +1,4 @@
-# @typed/maybe -- 5.0.0
+# @typed/maybe -- 6.0.0
 
 Well-typed Maybe data structure
 
@@ -71,7 +71,7 @@ a `Nothing` will be returned. All other values will be wrapped in a `Just`.
 
 ```typescript
 
-export const of: <A>(value: A) => Maybe<A> = toMaybe
+export const of: <A>(value: A | void) => Maybe<A> = toMaybe
 }
 
 ```

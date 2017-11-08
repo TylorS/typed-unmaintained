@@ -1,4 +1,4 @@
-# @typed/logic -- 2.2.0
+# @typed/logic -- 2.3.0
 
 Collection of functions to perform logic
 
@@ -860,6 +860,42 @@ export const propEq: PropEq = curry3(function<O, K extends keyof O>(
 ): boolean {
   return equals(obj[key], value)
 })
+
+```
+
+</details>
+<hr />
+
+
+#### propOr\<A, K extends string\>(defaultValue: A, key: K, obj: { [Key in K]: A }): A
+
+<p>
+
+Returns the value at a given key if an object has that property, otherwise
+returns the defaultValue.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const propOr: PropOr = curry3(__propOr)
+
+function __propOr<A, K extends string>(defaultValue: A, key: K, obj: { [Key in K]: A }): A {
+  return obj.hasOwnProperty(key) ? obj[key] : defaultValue
+}
+
+export type PropOr = {
+  <A, K extends string>(defaultValue: A, key: K, obj: { [Key in K]: A }): A
+  <A, K extends string>(defaultValue: A, key: K): (obj: { [Key in K]: A }) => A
+  <A>(defaultValue: A): {
+    <K extends string>(key: K, obj: { [Key in K]: A }): A
+    <K extends string>(key: K): (obj: { [Key in K]: A }) => A
+  }
+}
 
 ```
 

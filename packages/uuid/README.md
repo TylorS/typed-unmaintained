@@ -1,4 +1,4 @@
-# @typed/uuid -- 0.0.0
+# @typed/uuid -- 1.0.0
 
 Cross-platform TypeScript implementation of UUID
 
@@ -17,14 +17,17 @@ All functions are curried!
 
 <p>
 
+A Universally Unique identifier.
 
+**Note:** A Uuid will *not* actually have ._uuid property on it. This is only used to
+differentiate type `Uuid` from type `string` for an improved type experience.
 
 </p>
 
 
 ```typescript
 
-export type Uuid = string
+export type Uuid = string & { readonly _uuid: undefined }
 
 ```
 
@@ -43,8 +46,8 @@ Returns `true` if a string is a UUID.
 
 ```typescript
 
-export function isUuid(value: string): value is Uuid {
-  return uuidPattern.test(value)
+export function isUuid(value: string | Uuid): value is Uuid {
+  return uuidPattern.test(value as string)
 }
 
 ```
