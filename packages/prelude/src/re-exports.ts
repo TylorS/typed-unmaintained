@@ -104,6 +104,7 @@ export {
   not,
   or,
   propEq,
+  propOr,
   tryCatch,
 } from '@typed/logic'
 export {
@@ -129,7 +130,6 @@ export {
   Just,
   Nothing,
   Maybe,
-  toMaybe,
   combine,
   combineArray,
 } from '@typed/maybe'
