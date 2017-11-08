@@ -1,4 +1,4 @@
-import { Maybe, fromJust, isNothing, toMaybe } from '@typed/maybe'
+import { Maybe, fromJust, isNothing } from '@typed/maybe'
 
 import { Lens } from '../types'
 import { curry2 } from '@typed/functions'
@@ -20,7 +20,7 @@ function __lens<A, B>(getter: (a: A) => B | void, setter: (value: B, a: A) => A)
   }
 
   function view(a: A): Maybe<B> {
-    return toMaybe(getter(a))
+    return Maybe.of(getter(a))
   }
 
   return { view, updateAt: curry2(updateAt) }

@@ -10,5 +10,5 @@ export namespace Maybe {
    * a `Nothing` will be returned. All other values will be wrapped in a `Just`.
    * @name Maybe.of<A>(value: A): Maybe<A>
    */
-  export const of: <A>(value: A) => Maybe<A> = toMaybe
+  export const of: <A>(value: A | void) => Maybe<A> = toMaybe
 }
