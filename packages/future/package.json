@@ -1,6 +1,6 @@
 {
   "name": "@typed/future",
-  "version": "3.2.0",
+  "version": "4.0.0",
   "description": "Small future implemenatation",
   "main": "lib/index.js",
   "module": "lib.es2015/index.js",
@@ -17,8 +17,8 @@
   "dependencies": {
     "@most/disposable": "1.0.0-beta.1",
     "@most/types": "1.0.0",
-    "@typed/functions": "2.2.0",
-    "@typed/list": "2.2.0"
+    "@typed/functions": "2.3.0",
+    "@typed/list": "2.3.0"
   },
   "author": "Tylor Steinberger",
   "license": "MIT"

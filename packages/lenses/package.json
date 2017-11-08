@@ -1,6 +1,6 @@
 {
   "name": "@typed/lenses",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Well-typed functional lenses",
   "main": "lib/index.js",
   "module": "lib.es2015/index.js",
@@ -15,8 +15,8 @@
     "test:lint": "../../node_modules/.bin/prettier --write --print-width 100 --tab-width 2 --no-semi --single-quote --trailing-comma es5 --parser typescript src/**/*.ts"
   },
   "dependencies": {
-    "@typed/functions": "2.2.0",
-    "@typed/maybe": "5.0.0"
+    "@typed/functions": "2.3.0",
+    "@typed/maybe": "6.0.0"
   },
   "repository": {
     "type": "git",

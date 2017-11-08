@@ -1,6 +1,6 @@
 {
   "name": "@typed/prelude",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "The TypeScript standard library",
   "main": "lib/index.js",
   "module": "lib.es2015/index.js",
@@ -16,15 +16,15 @@
   },
   "dependencies": {
     "@typed/core": "2.1.0",
-    "@typed/either": "3.2.0",
-    "@typed/functions": "2.2.0",
-    "@typed/lenses": "2.2.0",
-    "@typed/list": "2.2.0",
-    "@typed/logic": "2.2.0",
-    "@typed/math": "2.2.0",
-    "@typed/maybe": "5.0.0",
-    "@typed/objects": "2.2.0",
-    "@typed/strings": "3.1.0"
+    "@typed/either": "3.3.0",
+    "@typed/functions": "2.3.0",
+    "@typed/lenses": "2.3.0",
+    "@typed/list": "2.3.0",
+    "@typed/logic": "2.3.0",
+    "@typed/math": "2.3.0",
+    "@typed/maybe": "6.0.0",
+    "@typed/objects": "2.3.0",
+    "@typed/strings": "3.2.0"
   },
   "repository": {
     "type": "git",
