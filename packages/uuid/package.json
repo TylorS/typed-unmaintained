@@ -36,6 +36,6 @@
   },
   "homepage": "https://github.com/TylorS/typed#readme",
   "devDependencies": {
-    "@types/node": "8.0.47"
+    "@types/node": "9.3.0"
   }
 }
