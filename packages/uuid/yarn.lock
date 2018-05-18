@@ -2,38 +2,6 @@
 # yarn lockfile v1
 
 
-"@typed/core@2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@typed/core/-/core-2.1.0.tgz#9c0c303bbe83a9979464bd41d8e5e49073cde323"
-
-"@typed/either@3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@typed/either/-/either-3.2.0.tgz#567768db8f2a5ec362fd21773007e986e765eb9b"
-  dependencies:
-    "@typed/core" "2.1.0"
-    "@typed/functions" "2.2.0"
-
-"@typed/functions@2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@typed/functions/-/functions-2.2.0.tgz#7831c8f2c41a51695b0a119ee26ceb0516bc6734"
-  dependencies:
-    "@typed/core" "2.1.0"
-
-"@typed/logic@2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@typed/logic/-/logic-2.2.0.tgz#10f87e1bbab32ff34d15fbb4ed23947c442bae1b"
-  dependencies:
-    "@typed/either" "3.2.0"
-    "@typed/functions" "2.2.0"
-    "@typed/maybe" "5.0.0"
-
-"@typed/maybe@5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@typed/maybe/-/maybe-5.0.0.tgz#381e6801d41ff63a7c1c4e6c5a9c7f7a50e93840"
-  dependencies:
-    "@typed/core" "2.1.0"
-    "@typed/functions" "2.2.0"
-
-"@types/node@8.0.47":
-  version "8.0.47"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.47.tgz#968e596f91acd59069054558a00708c445ca30c2"
+"@types/node@10.1.2":
+  version "10.1.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.1.2.tgz#1b928a0baa408fc8ae3ac012cc81375addc147c6"
