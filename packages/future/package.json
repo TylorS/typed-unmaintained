@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@most/disposable": "1.0.0-beta.1",
-    "@most/types": "1.0.0",
+    "@most/types": "1.0.1",
     "@typed/functions": "2.3.0",
     "@typed/list": "2.3.0"
   },
