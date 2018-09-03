@@ -13,59 +13,10 @@
   version "1.6.4"
   resolved "https://registry.yarnpkg.com/@most/prelude/-/prelude-1.6.4.tgz#254ab6e22c0d4e7cb19e6ec1c966b75f57317f25"
 
-"@most/types@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@most/types/-/types-1.0.0.tgz#5c301d2437342a1b82e38463fdb94e1bafe2c6d9"
+"@most/types@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@most/types/-/types-1.0.1.tgz#8691580d1f3bf569b91d48f6688be9ad26dfc86c"
 
 "@most/types@^1.0.0-beta.1":
   version "1.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/@most/types/-/types-1.0.0-beta.1.tgz#db2f85cb4aa1c6a3ec1a4b2d868dc6e522c2ed11"
-
-"@typed/core@2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@typed/core/-/core-2.1.0.tgz#9c0c303bbe83a9979464bd41d8e5e49073cde323"
-
-"@typed/either@3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@typed/either/-/either-3.2.0.tgz#567768db8f2a5ec362fd21773007e986e765eb9b"
-  dependencies:
-    "@typed/core" "2.1.0"
-    "@typed/functions" "2.2.0"
-
-"@typed/functions@2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@typed/functions/-/functions-2.2.0.tgz#7831c8f2c41a51695b0a119ee26ceb0516bc6734"
-  dependencies:
-    "@typed/core" "2.1.0"
-
-"@typed/lenses@2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@typed/lenses/-/lenses-2.2.0.tgz#0d6a9ec97d956f4dd797a9686f7b4bdb569b6af1"
-  dependencies:
-    "@typed/functions" "2.2.0"
-    "@typed/maybe" "5.0.0"
-
-"@typed/list@2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@typed/list/-/list-2.2.0.tgz#683f389c53808881b477184264b247a869f83bb7"
-  dependencies:
-    "@typed/core" "2.1.0"
-    "@typed/functions" "2.2.0"
-    "@typed/lenses" "2.2.0"
-    "@typed/logic" "2.2.0"
-    "@typed/maybe" "5.0.0"
-
-"@typed/logic@2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@typed/logic/-/logic-2.2.0.tgz#10f87e1bbab32ff34d15fbb4ed23947c442bae1b"
-  dependencies:
-    "@typed/either" "3.2.0"
-    "@typed/functions" "2.2.0"
-    "@typed/maybe" "5.0.0"
-
-"@typed/maybe@5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@typed/maybe/-/maybe-5.0.0.tgz#381e6801d41ff63a7c1c4e6c5a9c7f7a50e93840"
-  dependencies:
-    "@typed/core" "2.1.0"
-    "@typed/functions" "2.2.0"
