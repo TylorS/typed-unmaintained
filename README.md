@@ -10,7 +10,6 @@
 
 There are many single purpose packages that make up `Typed`.
 
-- [`@typed/core`](./packages/core) -- Shared kernel of types for the Typed organization
 - [`@typed/either`](./packages/either) -- Well-typed and functional `Either`
 - [`@typed/functions`](./packages/functions) -- Collection of functions for working with functions
 - [`@typed/future`](./packages/future) -- Well-typed and functional `Future`
