@@ -7,10 +7,10 @@ import { curry2 } from '@typed/functions'
  * @name range(from: number, to: number): Array<number>
  * @example
  * import { range, equals } from '167'
- * 
+ *
  * const xs = range(1, 4)
  * const ys = [1, 2, 3]
- * 
+ *
  * equals(xs, ys) // true
  */
 export const range: Range = curry2(__range)

@@ -13,7 +13,7 @@ export function median(numbers: List<number>): Maybe<number> {
 
   if (length === 0) return Nothing
 
-  const width = 2 - length % 2
+  const width = 2 - (length % 2)
   const index = (length - width) / 2
 
   const medianNumbers = slice(index, Maybe.of(index + width), sort<number>(ascend(x => x), numbers))

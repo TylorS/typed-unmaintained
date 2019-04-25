@@ -4,9 +4,9 @@ import { curry2 } from '@typed/functions'
 import { map } from './map'
 
 /**
- * Applies the function contained in a `Maybe` to the value contained in a 
+ * Applies the function contained in a `Maybe` to the value contained in a
  * second `Maybe`.
- * @name ap<A, B>(fn: Maybe<(value: A) => B>, value: Maybe<A>): Maybe<B> 
+ * @name ap<A, B>(fn: Maybe<(value: A) => B>, value: Maybe<A>): Maybe<B>
  */
 export const ap: MaybeAp = curry2(__ap)
 

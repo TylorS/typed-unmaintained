@@ -1,7 +1,7 @@
 import { ComparisonNumbers, curry3 } from '@typed/functions'
 
 /**
- * Makes an ascending comparator function out of a function that returns a 
+ * Makes an ascending comparator function out of a function that returns a
  * value that can be compared with < and >.
  * @name ascend<A, B>(f: (a: A) => B, a: A, b: A): ComparisonNumbers
  */

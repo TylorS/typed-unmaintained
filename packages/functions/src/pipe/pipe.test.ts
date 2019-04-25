@@ -8,9 +8,41 @@ export const test: Test = describe(`pipe`, [
     const g = (x: number) => x * 2
 
     equal(pipe(f)(1), 2)
-    equal(pipe(f, g)(1), 4)
-    equal(pipe(f, g, g)(1), 8)
-    equal(pipe(f, g, g, f)(1), 9)
-    equal(pipe(f, g, g, f, g, g, f)(1), 37)
+    equal(
+      pipe(
+        f,
+        g
+      )(1),
+      4
+    )
+    equal(
+      pipe(
+        f,
+        g,
+        g
+      )(1),
+      8
+    )
+    equal(
+      pipe(
+        f,
+        g,
+        g,
+        f
+      )(1),
+      9
+    )
+    equal(
+      pipe(
+        f,
+        g,
+        g,
+        f,
+        g,
+        g,
+        f
+      )(1),
+      37
+    )
   }),
 ])

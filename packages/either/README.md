@@ -445,7 +445,7 @@ export function swap<A, B>(either: Either<A, B>): Either<B, A> {
 
 <p>
 
-Extracts the value from an `Either` applying function `f` if the `Either\<A, B\>` is 
+Extracts the value from an `Either` applying function `f` if the `Either\<A, B\>` is
 `Left\<A\>` or function `g` if `Right\<B\>`.
 
 </p>

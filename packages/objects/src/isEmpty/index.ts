@@ -9,7 +9,7 @@ import { length } from '../length'
  * @name isEmpty<A>(obj: A): boolean
  * @example
  * import { isEmpty } from '167'
- * 
+ *
  * isEmpty({}) // true
  * isEmpty({ a: 1, b: 2 }) // false
  * isEmpty([]) // true
@@ -20,5 +20,9 @@ import { length } from '../length'
 export const isEmpty: <A>(object: A) => boolean = ifElse(
   x => x === null || x === void 0,
   always(false),
-  pipe(keys, length, equals(0))
+  pipe(
+    keys,
+    length,
+    equals(0)
+  )
 )

@@ -1,7 +1,7 @@
 import { ComparisonNumbers, curry3 } from '@typed/functions'
 
 /**
- * Makes a descending comparator function out of a function that returns a 
+ * Makes a descending comparator function out of a function that returns a
  * value that can be compared with < and >.
  * @name descend<A, B>(f: (a: A) => B, a: A, b: A): ComparisonNumbers
  */
@@ -23,6 +23,8 @@ export const descend: Descend = curry3(function ascend<A, B>(
 export type Descend = {
   <A, B>(f: (a: A) => B, a: A, b: A): ComparisonNumbers
   <A, B>(f: (a: A) => B, a: A): (b: A) => ComparisonNumbers
-  <A, B>(f: (a: A) => B): (a: A) => (b: A) => ComparisonNumbers
-  <A, B>(f: (a: A) => B): (a: A, b: A) => ComparisonNumbers
+  <A, B>(f: (a: A) => B): {
+    (a: A): (b: A) => ComparisonNumbers
+    (a: A, b: A): ComparisonNumbers
+  }
 }

@@ -8,7 +8,7 @@ import { map } from './map'
 
 /**
  * Apply the function contained in an Applicative to the values contained
- * in another Applicative. Works with all data structures supported by `chain` and 
+ * in another Applicative. Works with all data structures supported by `chain` and
  * `map`.
  * @name ap<A, B>(fn: List<Arity1<A, B>>, values: List<A>): Array<B>
  */

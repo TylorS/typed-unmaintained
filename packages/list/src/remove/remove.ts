@@ -10,7 +10,7 @@ const isZero = equals(0)
  * Removes items from a `List`.
  * @name remove<A>(index: number, amount: number, list: List<A>): Array<A>
  */
-export const remove: RemoveArity3 = curry3(function remove<A>(
+export const remove = curry3(function remove<A>(
   index: number,
   amount: number,
   list: List<A>
@@ -27,4 +27,4 @@ export const remove: RemoveArity3 = curry3(function remove<A>(
   for (let i = index + amount; i < length; ++i) newList[i - amount] = list[i]
 
   return newList
-})
+}) as RemoveArity3

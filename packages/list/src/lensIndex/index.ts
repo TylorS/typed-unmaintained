@@ -8,5 +8,5 @@ import { update } from '../update'
  * @name lensIndex<A>(index: number): Lens<List<A>, A>
  */
 export function lensIndex<A>(index: Index): Lens<List<A>, A> {
-  return lens((array: List<A>) => array[index], update(index))
+  return lens((array: List<A>): A => array[index], (value, list) => update(index, value, list))
 }

@@ -5,7 +5,7 @@ import { Just } from './Just'
  * @name fromJust<A>(just: Just<A>): A
  * @example
  * import { fromJust, Just } from '@typed/maybe'
- * 
+ *
  * const value = fromJust(Just.of(1))
  * console.log(value) // logs '1'
  */

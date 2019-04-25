@@ -10,7 +10,7 @@ export function curry5(
 ): Curry5<any, any, any, any, any, any>
 
 export function curry5<A, B, C, D, E, F>(fn: Arity5<A, B, C, D, E, F>): Curry5<A, B, C, D, E, F> {
-  function curried(a: A, b: B, c: C, d: D, e: E, ...args: Array<any>): any {
+  function curried(a: A, b: B, c: C, d: D, e: E): any {
     switch (arguments.length) {
       case 1:
         return curry4<B, C, D, E, F>((b: B, c: C, d: D, e: E) => fn(a, b, c, d, e))
@@ -19,9 +19,9 @@ export function curry5<A, B, C, D, E, F>(fn: Arity5<A, B, C, D, E, F>): Curry5<A
       case 3:
         return curry2<D, E, F>((d: D, e: E) => fn(a, b, c, d, e))
       case 4:
-        return (e: E, ...args: Array<any>) => fn(a, b, c, d, e, ...args)
+        return (e: E) => fn(a, b, c, d, e)
       default:
-        return fn(a, b, c, d, e, ...args)
+        return fn(a, b, c, d, e)
     }
   }
 

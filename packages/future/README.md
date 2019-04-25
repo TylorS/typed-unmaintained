@@ -212,7 +212,7 @@ function forkFuture<A, B>(
 
 <p>
 
-Applies the function resolved from a `Future` to the value resolved from a 
+Applies the function resolved from a `Future` to the value resolved from a
 second `Future`.
 
 </p>
@@ -382,7 +382,7 @@ export type FutureMap = {
 
 <p>
 
-Returns a `Future` that is the result of calling `f` with the rejected 
+Returns a `Future` that is the result of calling `f` with the rejected
 value of another future. Similar to `Promise.catch`.
 
 </p>

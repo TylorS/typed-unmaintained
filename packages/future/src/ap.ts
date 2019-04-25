@@ -4,7 +4,7 @@ import { curry2 } from '@typed/functions'
 import { map } from './map'
 
 /**
- * Applies the function resolved from a `Future` to the value resolved from a 
+ * Applies the function resolved from a `Future` to the value resolved from a
  * second `Future`.
  * @name ap<A, B, C>(fn: Future<A, (value: B) => C>, value: Future<A, B>): Future<A, C>
  */

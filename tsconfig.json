@@ -13,7 +13,8 @@
     "sourceMap": true,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "strict": true
   },
   "include": [
     "packages/*/src/**/*.ts",

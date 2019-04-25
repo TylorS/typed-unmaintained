@@ -853,7 +853,7 @@ export function always<A>(a: A) {
 
 <p>
 
-Given a list of arguments and a function, applies the function with 
+Given a list of arguments and a function, applies the function with
 the given arguments.
 
 </p>

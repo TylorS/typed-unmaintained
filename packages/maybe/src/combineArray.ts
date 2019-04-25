@@ -10,7 +10,7 @@ import { isNothing } from './isNothing'
  * If *any* of the `Maybe`s are `Nothing`s then `Nothing` is returned.
  * @name combineArray<R>(f: (...values: Array<any>) => R, maybes: ReadonlyArray<Maybe<any>>): R
  */
-export const combineArray: CombineArray = curry2(__combineArray)
+export const combineArray = curry2(__combineArray) as CombineArray
 
 function __combineArray<R>(
   f: (...values: Array<any>) => R,

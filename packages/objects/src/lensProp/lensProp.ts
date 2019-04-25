@@ -8,4 +8,4 @@ import { set } from '../set'
  * @name lensProp<A, K extends keyof A>(key: K): Lens<A, A[K]>
  */
 export const lensProp = <A, K extends keyof A = keyof A>(key: K): Lens<A, A[K]> =>
-  lens(prop(key), set(key))
+  lens(prop(key), (x, o) => set(key, x, o))

@@ -1,7 +1,7 @@
 import { Apply } from './types'
 
 /**
- * Given a list of arguments and a function, applies the function with 
+ * Given a list of arguments and a function, applies the function with
  * the given arguments.
  * @name apply<A>(list: ArrayLike<any>, fn: (...args: Array<any>) => A): A
  */

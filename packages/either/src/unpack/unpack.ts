@@ -6,7 +6,7 @@ import { fromLeft } from '../Left'
 import { fromRight } from '../Right'
 
 /**
- * Extracts the value from an `Either` applying function `f` if the `Either<A, B>` is 
+ * Extracts the value from an `Either` applying function `f` if the `Either<A, B>` is
  * `Left<A>` or function `g` if `Right<B>`.
  * @name unpack<A, B, C>(f: Arity1<A, C>, g: Arity1<B, C>, either: Either<A, B>): C
  */

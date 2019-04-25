@@ -15,7 +15,6 @@
     "test:lint": "../../node_modules/.bin/prettier --write --print-width 100 --tab-width 2 --no-semi --single-quote --trailing-comma es5 --parser typescript src/**/*.ts"
   },
   "dependencies": {
-    "@typed/core": "2.1.0",
     "@typed/functions": "2.3.0",
     "@typed/lenses": "2.3.0",
     "@typed/logic": "2.3.0",

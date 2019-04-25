@@ -9,7 +9,7 @@ export interface Just<A> {
 
 export namespace Just {
   /**
-   * Creates a Just given a value. 
+   * Creates a Just given a value.
    * @name Just.of<A>(value: A): Just<A>
    */
   export function of<A>(value: A): Just<A> {

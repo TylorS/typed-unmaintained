@@ -7,7 +7,7 @@ import { isPromiseLike } from '@typed/logic'
 
 /**
  * Creates a new `Monad` from the value contained in another.
- * Works with `Maybe`, `Either`, `PromiseLike` and `List` data 
+ * Works with `Maybe`, `Either`, `PromiseLike` and `List` data
  * structures.
  * @name chain<A, B>(f: (value: A) => List<B>, list: List<A>): Array<B>
  */

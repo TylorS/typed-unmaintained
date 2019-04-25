@@ -4,7 +4,7 @@ import { fromJust } from './fromJust'
 import { isJust } from './isJust'
 
 /**
- * Given a default value and a Maybe returns the default value if the Maybe is a 
+ * Given a default value and a Maybe returns the default value if the Maybe is a
  * Nothing or the value contained in a Just.
  * @name fromMaybe<A>(defaultValue: A, maybe: Maybe<A>): A
  */

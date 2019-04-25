@@ -3,7 +3,7 @@ import { List } from '../types'
 import { curry2 } from '@typed/functions'
 
 /**
- * Groups a list by keys returned by applying the provided function to each 
+ * Groups a list by keys returned by applying the provided function to each
  * item.
  * @name groupBy<Keys extends string, A>(f: Arity1<A, Keys>, list: List<A>): Readonly<Record<Keys, List<A>>>
  */
