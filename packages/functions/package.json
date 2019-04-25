@@ -1,6 +1,6 @@
 {
   "name": "@typed/functions",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "description": "Well-typed collection of functions for working with functions",
   "main": "lib/index.js",
   "module": "lib.es2015/index.js",
@@ -14,7 +14,6 @@
     "test:unit": "../../node_modules/.bin/typed-test 'src/*.test.ts' 'src/**/*.test.ts'",
     "test:lint": "../../node_modules/.bin/prettier --write --print-width 100 --tab-width 2 --no-semi --single-quote --trailing-comma es5 --parser typescript src/**/*.ts"
   },
-  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TylorS/typed.git"

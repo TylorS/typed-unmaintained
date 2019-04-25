@@ -1,6 +1,6 @@
 {
   "name": "@typed/list",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "description": "Immutable List for TypeScript",
   "main": "lib/index.js",
   "module": "lib.es2015/index.js",
@@ -15,10 +15,10 @@
     "test:lint": "../../node_modules/.bin/prettier --write --print-width 100 --tab-width 2 --no-semi --single-quote --trailing-comma es5 --parser typescript src/**/*.ts"
   },
   "dependencies": {
-    "@typed/functions": "2.3.0",
-    "@typed/lenses": "2.3.0",
-    "@typed/logic": "2.3.0",
-    "@typed/maybe": "6.0.0"
+    "@typed/functions": "3.0.0",
+    "@typed/lenses": "3.0.0",
+    "@typed/logic": "3.0.0",
+    "@typed/maybe": "7.0.0"
   },
   "repository": {
     "type": "git",

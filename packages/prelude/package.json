@@ -1,6 +1,6 @@
 {
   "name": "@typed/prelude",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "The TypeScript standard library",
   "main": "lib/index.js",
   "module": "lib.es2015/index.js",
@@ -15,15 +15,15 @@
     "test:lint": "../../node_modules/.bin/prettier --write --print-width 100 --tab-width 2 --no-semi --single-quote --trailing-comma es5 --parser typescript src/**/*.ts"
   },
   "dependencies": {
-    "@typed/either": "3.3.0",
-    "@typed/functions": "2.3.0",
-    "@typed/lenses": "2.3.0",
-    "@typed/list": "2.3.0",
-    "@typed/logic": "2.3.0",
-    "@typed/math": "2.3.0",
-    "@typed/maybe": "6.0.0",
-    "@typed/objects": "2.3.0",
-    "@typed/strings": "3.2.0"
+    "@typed/either": "4.0.0",
+    "@typed/functions": "3.0.0",
+    "@typed/lenses": "3.0.0",
+    "@typed/list": "3.0.0",
+    "@typed/logic": "3.0.0",
+    "@typed/math": "3.0.0",
+    "@typed/maybe": "7.0.0",
+    "@typed/objects": "3.0.0",
+    "@typed/strings": "4.0.0"
   },
   "repository": {
     "type": "git",
