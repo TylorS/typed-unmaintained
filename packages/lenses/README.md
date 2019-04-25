@@ -1,4 +1,4 @@
-# @typed/lenses -- 2.3.0
+# @typed/lenses -- 3.0.0
 
 Well-typed functional lenses
 

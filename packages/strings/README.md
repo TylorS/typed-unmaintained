@@ -1,4 +1,4 @@
-# @typed/strings -- 3.2.0
+# @typed/strings -- 4.0.0
 
 Well-typed functions for strings
 

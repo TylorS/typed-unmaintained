@@ -1,4 +1,4 @@
-# @typed/uuid -- 1.0.0
+# @typed/uuid -- 2.0.0
 
 Cross-platform TypeScript implementation of UUID
 

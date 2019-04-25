@@ -1,4 +1,4 @@
-# @typed/math -- 2.3.0
+# @typed/math -- 3.0.0
 
 Math related functions
 
@@ -151,7 +151,7 @@ export function median(numbers: List<number>): Maybe<number> {
 
   if (length === 0) return Nothing
 
-  const width = 2 - length % 2
+  const width = 2 - (length % 2)
   const index = (length - width) / 2
 
   const medianNumbers = slice(index, Maybe.of(index + width), sort<number>(ascend(x => x), numbers))

@@ -1,4 +1,4 @@
-# @typed/list -- 2.3.0
+# @typed/list -- 3.0.0
 
 Immutable List for TypeScript
 
@@ -160,11 +160,9 @@ Converts any `Iterable`, `Iterator` or `ArrayLike` to an `Array`.
 ```typescript
 
 export function arrayFrom<A>(iterable: Iterable<A> | Iterator<A> | List<A>): Array<A> {
-  if (Array.isArray(iterable)) return iterable
-
   if (isIterator(iterable)) return Array.from(toIterable(iterable))
 
-  return Array.from(iterable as Iterable<A>)
+  return Array.from(iterable as Iterable<A> | List<A>)
 }
 
 function isIterator<A>(x: any): x is Iterator<A> {
@@ -189,7 +187,7 @@ function toIterable<A>(iterator: Iterator<A>): Iterable<A> {
 
 <p>
 
-Makes an ascending comparator function out of a function that returns a 
+Makes an ascending comparator function out of a function that returns a
 value that can be compared with \< and \>.
 
 </p>
@@ -301,7 +299,7 @@ function __contains<A>(value: A, list: List<A>): boolean {
 
 <p>
 
-Makes a descending comparator function out of a function that returns a 
+Makes a descending comparator function out of a function that returns a
 value that can be compared with \< and \>.
 
 </p>
@@ -330,8 +328,10 @@ export const descend: Descend = curry3(function ascend<A, B>(
 export type Descend = {
   <A, B>(f: (a: A) => B, a: A, b: A): ComparisonNumbers
   <A, B>(f: (a: A) => B, a: A): (b: A) => ComparisonNumbers
-  <A, B>(f: (a: A) => B): (a: A) => (b: A) => ComparisonNumbers
-  <A, B>(f: (a: A) => B): (a: A, b: A) => ComparisonNumbers
+  <A, B>(f: (a: A) => B): {
+    (a: A): (b: A) => ComparisonNumbers
+    (a: A, b: A): ComparisonNumbers
+  }
 }
 
 ```
@@ -649,7 +649,7 @@ function __forEach<A>(f: (value: A, index: number) => any, list: List<A>): Array
 
 <p>
 
-Groups a list by keys returned by applying the provided function to each 
+Groups a list by keys returned by applying the provided function to each
 item.
 
 </p>
@@ -979,7 +979,7 @@ Creates an index for a List.
 ```typescript
 
 export function lensIndex<A>(index: Index): Lens<List<A>, A> {
-  return lens((array: List<A>) => array[index], update(index))
+  return lens((array: List<A>): A => array[index], (value, list) => update(index, value, list))
 }
 
 ```
@@ -1222,7 +1222,7 @@ Removes items from a `List`.
 
 ```typescript
 
-export const remove: RemoveArity3 = curry3(function remove<A>(
+export const remove = curry3(function remove<A>(
   index: number,
   amount: number,
   list: List<A>
@@ -1239,7 +1239,7 @@ export const remove: RemoveArity3 = curry3(function remove<A>(
   for (let i = index + amount; i < length; ++i) newList[i - amount] = list[i]
 
   return newList
-})
+}) as RemoveArity3
 
 ```
 

@@ -1,4 +1,4 @@
-# @typed/objects -- 2.3.0
+# @typed/objects -- 3.0.0
 
 Well-typed functions for objects
 
@@ -133,9 +133,9 @@ export type HasOwnProperty = {
 
 <p>
 
-Turns a named method with a specified arity into a function that can be 
-called directly supplied with arguments and a target object. The returned 
-function is curried and accepts arity + 1 parameters where the final 
+Turns a named method with a specified arity into a function that can be
+called directly supplied with arguments and a target object. The returned
+function is curried and accepts arity + 1 parameters where the final
 parameter is the target object.
 
 </p>
@@ -193,7 +193,11 @@ isEmpty(null) // false
 export const isEmpty: <A>(object: A) => boolean = ifElse(
   x => x === null || x === void 0,
   always(false),
-  pipe(keys, length, equals(0))
+  pipe(
+    keys,
+    length,
+    equals(0)
+  )
 )
 
 ```
@@ -285,7 +289,7 @@ Creates a lens that operates on an object's property.
 ```typescript
 
 export const lensProp = <A, K extends keyof A = keyof A>(key: K): Lens<A, A[K]> =>
-  lens(prop(key), set(key))
+  lens(prop(key), (x, o) => set(key, x, o))
 
 ```
 
@@ -354,8 +358,8 @@ Sets the property on an object.
 
 ```typescript
 
-export const set: SetArity3 = curry3(function __set<
-  Key extends string,
+export const set = curry3(function __set<
+  Key extends PropertyKey,
   A,
   O extends { readonly: { [K in Key]: A } }
 >(key: Key, value: A, obj: O): O {
@@ -363,17 +367,17 @@ export const set: SetArity3 = curry3(function __set<
   ;(clonedObj as any)[key] = value
 
   return clonedObj
-})
+}) as SetArity3
 
 export type SetArity3 = {
   <A, O extends { readonly [key: number]: A }>(key: number, value: A, obj: O): O
-  <Key extends string, A, O extends Readonly<Record<Key, A>>>(key: Key, value: A, obj: O): O
+  <Key extends PropertyKey, A, O extends Readonly<Record<Key, A>>>(key: Key, value: A, obj: O): O
 
   <A>(key: number, value: A): <O extends { readonly [key: number]: A }>(obj: O) => O
-  <Key extends string, A>(key: Key, value: A): SetArity1<Key, A>
+  <Key extends PropertyKey, A>(key: Key, value: A): SetArity1<Key, A>
 
   (key: number): SetArity2Number
-  <Key extends string>(key: Key): SetArity2<Key>
+  <Key extends PropertyKey>(key: Key): SetArity2<Key>
 }
 
 export type SetArity2Number = {
@@ -382,12 +386,12 @@ export type SetArity2Number = {
   <A, O extends { readonly [key: number]: A }>(value: A): (obj: O) => O
 }
 
-export type SetArity2<Key extends string> = {
+export type SetArity2<Key extends PropertyKey> = {
   <A, O extends Readonly<Record<Key, A>>>(value: A, obj: O): O
   <A>(value: A): SetArity1<Key, A>
 }
 
-export type SetArity1<Key extends string, A> = {
+export type SetArity1<Key extends PropertyKey, A> = {
   <O extends Readonly<Record<Key, A>>>(obj: O): O
 }
 

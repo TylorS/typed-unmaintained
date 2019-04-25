@@ -1,4 +1,4 @@
-# @typed/maybe -- 6.0.0
+# @typed/maybe -- 7.0.0
 
 Well-typed Maybe data structure
 
@@ -35,7 +35,7 @@ export interface Just<A> {
 
 <p>
 
-Creates a Just given a value. 
+Creates a Just given a value.
 
 </p>
 
@@ -103,7 +103,7 @@ export const Nothing: Nothing = { '@typed/Nothing': true }
 
 <p>
 
-Applies the function contained in a `Maybe` to the value contained in a 
+Applies the function contained in a `Maybe` to the value contained in a
 second `Maybe`.
 
 </p>
@@ -166,7 +166,7 @@ export interface MaybeChain {
 
 <p>
 
-Applies a function with the values contained in 2 `Maybes` if both are 
+Applies a function with the values contained in 2 `Maybes` if both are
 `Just`s. If either `Maybe`s are `Nothing` then `Nothing` is returned.
 
 </p>
@@ -218,7 +218,7 @@ If *any* of the `Maybe`s are `Nothing`s then `Nothing` is returned.
 
 ```typescript
 
-export const combineArray: CombineArray = curry2(__combineArray)
+export const combineArray = curry2(__combineArray) as CombineArray
 
 function __combineArray<R>(
   f: (...values: Array<any>) => R,
@@ -326,7 +326,7 @@ export function fromJust<A>(just: Just<A>): A {
 
 <p>
 
-Given a default value and a Maybe returns the default value if the Maybe is a 
+Given a default value and a Maybe returns the default value if the Maybe is a
 Nothing or the value contained in a Just.
 
 </p>
@@ -358,7 +358,7 @@ export interface FromMaybe {
 
 <p>
 
-Given a Maybe\<A\> it returns true if the Maybe\<A\> is Just\<A\> or 
+Given a Maybe\<A\> it returns true if the Maybe\<A\> is Just\<A\> or
 false if it is a Nothing.
 
 </p>
@@ -395,7 +395,7 @@ export function isJust<A>(maybe: Maybe<A>): maybe is Just<A> {
 
 <p>
 
-Given a Maybe\<A\> it returns false if the Maybe\<A\> is Just\<A\> or 
+Given a Maybe\<A\> it returns false if the Maybe\<A\> is Just\<A\> or
 true if it is a Nothing.
 
 </p>
@@ -432,7 +432,7 @@ export function isNothing<A>(maybe: Maybe<A>): maybe is Nothing {
 
 <p>
 
-Applies a function to the value possibly contained in a `Maybe`. If the 
+Applies a function to the value possibly contained in a `Maybe`. If the
 maybe is a `Nothing` just the `Nothing` is returned.
 
 </p>

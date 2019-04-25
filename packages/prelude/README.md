@@ -1,4 +1,4 @@
-# @typed/prelude -- 5.0.0
+# @typed/prelude -- 6.0.0
 
 The TypeScript standard library
 
@@ -178,7 +178,7 @@ export { split, trim, toLowerCase, toUpperCase, substr, substring } from '@typed
 <p>
 
 Apply the function contained in an Applicative to the values contained
-in another Applicative. Works with all data structures supported by `chain` and 
+in another Applicative. Works with all data structures supported by `chain` and
 `map`.
 
 </p>
@@ -218,7 +218,7 @@ export type Ap = {
 <p>
 
 Creates a new `Monad` from the value contained in another.
-Works with `Maybe`, `Either`, `PromiseLike` and `List` data 
+Works with `Maybe`, `Either`, `PromiseLike` and `List` data
 structures.
 
 </p>
@@ -247,7 +247,7 @@ export type Chain = {
   <A, B>(f: (value: A, index: number) => List<B>): (list: List<A>) => Array<B>
   <A, B>(f: (value: A) => Maybe<B>): (maybe: Maybe<A>) => Maybe<B>
   <A, B>(f: (value: A) => PromiseLike<B>): (promise: PromiseLike<A>) => Promise<B>
-  <A, B, C>(f: (value: A) => Either<A, C>): (either: Either<A, B>) => Either<A, C>
+  <A, B, C>(f: (value: B) => Either<A, C>): (either: Either<A, B>) => Either<A, C>
 }
 
 ```

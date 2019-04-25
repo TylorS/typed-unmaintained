@@ -1,4 +1,4 @@
-# @typed/logic -- 2.3.0
+# @typed/logic -- 3.0.0
 
 Collection of functions to perform logic
 
@@ -131,7 +131,7 @@ function __and<A>(predicate1: Predicate<A>, predicate2: Predicate<A>, value: A):
 
 <p>
 
-Returns `true` if predicate function returns `true` for any value contained 
+Returns `true` if predicate function returns `true` for any value contained
 in a `List`.
 
 </p>
@@ -372,7 +372,7 @@ export function functionName(fn: Function): string {
 
 <p>
 
-Applies `\>` to 2 values. 
+Applies `\>` to 2 values.
 
 </p>
 
@@ -907,7 +907,7 @@ export type PropOr = {
 
 <p>
 
-Given a list of arguments and a function, applies the function with 
+Given a list of arguments and a function, applies the function with
 the given arguments.
 
 </p>
@@ -918,7 +918,7 @@ the given arguments.
 
 ```typescript
 
-export const tryCatch: TryCatch = curry2(function apply<A, Err = any>(
+export const tryCatch = curry2(function apply<A, Err = any>(
   list: List<any>,
   f: (...args: Array<any>) => A
 ): Either<Err, A> {
@@ -938,7 +938,7 @@ export const tryCatch: TryCatch = curry2(function apply<A, Err = any>(
     default:
       return __catch(() => f.apply(null, list))
   }
-})
+}) as TryCatch
 
 function __catch<A, Err = any>(f: () => A): Either<Err, A> {
   try {
