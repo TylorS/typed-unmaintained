@@ -710,10 +710,10 @@
     "167" "0.36.0"
     assertion-error-diff "^1.0.0"
 
-"@typed/test@9.2.0":
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/@typed/test/-/test-9.2.0.tgz#8776f21c32b9dd5b8ac5850c646ff26bc26f618d"
-  integrity sha512-/LDuV4CH9TE/msK/AZYlR2vqDhrFB6pv5h2Mmklv1n2l9TZDNwXcyRqjQT/JxpT0o9E4kAEu47WtrrbsHBRWtA==
+"@typed/test@9.3.0":
+  version "9.3.0"
+  resolved "https://registry.yarnpkg.com/@typed/test/-/test-9.3.0.tgz#29933eeec31a6a2c919468b54ad6c5c15c9371a4"
+  integrity sha512-xHTJjkGYNh9nab14BB6aoTP2cAjrBCbnaW/Rrf/lXWR5DD1VMkh/PBv2fInpAQn0+9XlgqsBhmFQ+FH6gFOvhA==
   dependencies:
     "@typed/assertions" "1.1.0"
     "@types/webpack" "4.4.13"
