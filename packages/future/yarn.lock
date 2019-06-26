@@ -2,25 +2,20 @@
 # yarn lockfile v1
 
 
-"@most/disposable@1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@most/disposable/-/disposable-1.2.1.tgz#c72d7de3d98a6662916285e4516c713a95b94fa3"
-  integrity sha512-VQ5gGZd5VFqYyP3sfYmVbrb4MX7j7tqIQKpoATOz5loDXE/9Y/BU5SzD2pGhVtui62kUdK13UFSom4njtmQ1Lw==
+"@most/disposable@1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@most/disposable/-/disposable-1.2.2.tgz#1f9dfcc1b9d73165436eee34ddedc2e70d7be695"
+  integrity sha512-05u3obo0sDuh1PGw1BS6VEhgJTLkPMyGHOAvSJMSk2tArgBvhMvjayl8fU4DEKO7r+3aTg7F9Stnr1T61578yQ==
   dependencies:
-    "@most/prelude" "^1.7.2"
-    "@most/types" "^1.0.1"
+    "@most/prelude" "^1.7.3"
+    "@most/types" "^1.0.2"
 
-"@most/prelude@^1.7.2":
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/@most/prelude/-/prelude-1.7.2.tgz#be4ed406518d4c8c220e45c39fa7251365425b73"
-  integrity sha512-GM5ec7+xpkuXiCMyzhyENgH/xZ8t0nAMDBY0QOsVVD6TrZYjJKUnW1eaI18HHX8W+COWMwWR9c0zoPiBp9+tUg==
+"@most/prelude@^1.7.3":
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/@most/prelude/-/prelude-1.7.3.tgz#51db3f3ba3ed65431b6eea89ecb0a31826af640c"
+  integrity sha512-qWWEnA22UP1lzFfKx75XMut6DUUXGRKe7qv2k+Bgs7ju8lwb5RjsZYyQZ+VcsYvHcIavHKzseLlBMLOe2CvUZw==
 
-"@most/types@1.0.2":
+"@most/types@1.0.2", "@most/types@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@most/types/-/types-1.0.2.tgz#a272c919a3dafe942bd02d63402f0548593af870"
   integrity sha512-ZVkDwaiuGVTXywADeJ3aUBsD41UURldIljlsSTMdiWfhVEOY7dsY8iq+9wFUjRZYjhnpn9tLiOHaqyjbxm1prg==
-
-"@most/types@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@most/types/-/types-1.0.1.tgz#8691580d1f3bf569b91d48f6688be9ad26dfc86c"
-  integrity sha512-fCLkp1Yzp+Kamr00i1yG3GPhekOE150TSeoqUAy1cslmJ/a0+x7Y6GCwO26ke614sUbV9BdL0gTGCZJA4V1JUw==
